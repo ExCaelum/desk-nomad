@@ -1,1 +1,8 @@
-<p><%= image_tag @property.image.url %></p>
+<h1>All Properties</h1>
+
+<% @properties.each do |property| %>
+  <div>
+    <%= image_tag property.image.url %>
+    <%=  property.title %>
+  </div>
+<% end %>

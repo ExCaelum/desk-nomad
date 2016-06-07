@@ -199,6 +199,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   paperclip
+
   pg (~> 0.15)
   rails (= 4.2.6)
   rails_12factor
