@@ -1,0 +1,7 @@
+<h1> <%= @category.title %> </h1>
+
+<p>
+  <% @category.properties.each do |prop| %>
+    <%= prop.title %>
+  <% end %>
+</p>
