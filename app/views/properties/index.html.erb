@@ -2,6 +2,7 @@
 
 <% @properties.each do |property| %>
   <div>
+    <%= image_tag property.image.url %>
     <%=  property.title %>
   </div>
 <% end %>

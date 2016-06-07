@@ -9,4 +9,8 @@ class Property < ActiveRecord::Base
   validates :image_file_name, presence: true
   validates :city, presence: true
   validates :state, presence: true
+
+  has_attached_file :image
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+ 
 end
