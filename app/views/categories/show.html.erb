@@ -1,7 +1,13 @@
-<h1> <%= @category.title %> </h1>
-
-<p>
-  <% @category.properties.each do |prop| %>
-    <%= prop.title %>
-  <% end %>
-</p>
+<div class="container-fluid">
+  <div class="row text-center">
+    <h1> <%= @category.title %> </h1><br>
+  </div>
+  <div class="row">
+    <% @category.properties.each do |prop| %>
+    <div class="col-md-3 text-center">
+      <%= prop.title %><br>
+      $<%= prop.price %>
+    </div>
+    <% end %>
+  </div>
+</div>

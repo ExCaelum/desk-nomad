@@ -1,8 +1,13 @@
-<h1>All Properties</h1>
-
-<% @properties.each do |property| %>
-  <div>
-    <%= image_tag property.image.url %>
-    <%=  property.title %>
+<div class="container-fluid">
+  <div class="row text-center">
+    <h1>All Properties</h1>
   </div>
-<% end %>
+  <div class="row">
+    <% @properties.each do |property| %>
+      <div class="col-md-3 text-center">
+        <%= image_tag property.image.url %><br>
+        <%=  property.title %>
+      </div>
+    <% end %>
+  </div>
+</div>
