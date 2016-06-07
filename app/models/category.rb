@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
     self.slug = title.parameterize
   end
 
-  def to_params
+  def to_param
     slug
   end
 end
