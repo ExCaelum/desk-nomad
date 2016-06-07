@@ -15,7 +15,7 @@ RSpec.feature 'visitor can see properties for a category' do
                                image_file_name: "image_name.jpeg",
                                city: "Los Angeles",
                                state: "California" )
-    visit category_path(category)
+    visit category_path(category.title)
     expect(page).to have_content("Work Space")
     expect(page).to have_content("Property1")
     expect(page).to have_content("Another Property")
