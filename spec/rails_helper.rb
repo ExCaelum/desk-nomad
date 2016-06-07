@@ -69,7 +69,7 @@ RSpec.configure do |config|
                     price: 10,
                     image_file_name: "file_name.jpeg",
                     city: "Denver",
-                    state: "Colorado" )
+                    state: "Colorado")
   end
 
   def create_second_property
@@ -80,4 +80,9 @@ RSpec.configure do |config|
                     city: "Los Angeles",
                     state: "California" )
   end
+
+  def create_category
+    Category.create(title: "Work Space")
+  end
+
 end
