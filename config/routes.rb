@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :properties, only: [:index]
-  get "/:category_name", to: "categories#show", as: 'category'
 
+  get "/:slug", to: "categories#show", as: 'category'
 end
