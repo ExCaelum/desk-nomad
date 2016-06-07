@@ -7,9 +7,6 @@ class Property < ActiveRecord::Base
   validates :price, presence: true,
                     numericality: true
   validates :image_file_name, presence: true
-  validates :image_content_type, presence: true
-  validates :image_file_size, presence: true
-  validates :image_updated_at, presence: true
   validates :city, presence: true
   validates :state, presence: true
 end

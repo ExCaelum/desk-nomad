@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -61,4 +62,22 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  def create_property
+    Property.create(title: "Property1",
+                    description: "This is a property",
+                    price: 10,
+                    image_file_name: "file_name.jpeg",
+                    city: "Denver",
+                    state: "Colorado" )
+  end
+
+  def create_second_property
+    Property.create(title: "Another Property",
+                    description: "This is a the second property",
+                    price: 20,
+                    image_file_name: "image_name.jpeg",
+                    city: "Los Angeles",
+                    state: "California" )
+  end
 end
