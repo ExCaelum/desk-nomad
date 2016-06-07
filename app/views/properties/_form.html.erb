@@ -1,0 +1,10 @@
+
+<%= form_for(@property, html: {multipart: true}) do |f| %>
+  <p>
+    <% if @property.image.exists? %>
+        <%= image_tag @property.image.url %><br/>
+    <% end %>
+    <%= f.label :image, "Attach a New Image" %><br />
+    <%= f.file_field :image %>
+  </p>
+<% end %>
