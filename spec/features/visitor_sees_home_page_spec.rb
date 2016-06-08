@@ -5,8 +5,8 @@ RSpec.feature "Visitor sees home page" do
 
     visit root_path
 
-    within('#home-page') do
-      expect(page).to have_content("DeskNomad")
+    within(".brand-before") do
+      expect(page).to have_content("Welcome to")
     end
 
   end

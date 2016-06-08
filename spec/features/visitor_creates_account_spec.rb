@@ -28,11 +28,11 @@ RSpec.feature "Visitor Creates Account" do
 
     expect(page).to have_content("My Dashboard")
 
-    within ("p:first") do
+    within (".user_info") do
       expect(page).to have_content("First Name: Roger")
     end
 
-    within ("p:last") do
+    within (".user_info") do
       expect(page).to have_content("Email: rsmith@gmail.com")
     end
   end

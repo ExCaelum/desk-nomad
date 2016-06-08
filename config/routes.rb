@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root to: "root#show"
 
-
   resources :properties, only: [:index, :show]
-  resources :cart_properties, only: [:create]
 
+  resources :cart_properties, only: [:create]
   resources :users, only: [:new, :create]
   get '/dashboard', to: 'users#show'
 
@@ -13,4 +12,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get "/:slug", to: "categories#show", as: 'category'
+
 end
