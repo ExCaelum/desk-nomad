@@ -25,6 +25,12 @@
     </div>
 </nav>
 
+Cart: <%= @cart.total_properties %>
+
+<% flash.each do |type, message|  %>
+  <%= content_tag :div, message %>
+<% end  %>
+
   <div class="container">
     <%= yield %>
   </div>

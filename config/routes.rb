@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: "root#show"
 
-  resources :users, only: [:new, :create, :show]
-  get '/dashboard', to: 'users#show'
 
-  resources :properties, only: [:index]
+  resources :properties, only: [:index, :show]
+  resources :cart_properties, only: [:create]
+
+  resources :users, only: [:new, :create]
+  get '/dashboard', to: 'users#show'
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
