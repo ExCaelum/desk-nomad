@@ -5,9 +5,8 @@ RSpec.feature 'visitor can see properties for a category' do
     category = Category.create(title: "Work Space", slug: "work-space")
     create_property(2)
 
-    category.properties << Property.find(1)
     category.properties << Property.find(2)
-
+    category.properties << Property.find(3)
 
     visit category_path(category)
 

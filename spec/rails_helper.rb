@@ -111,7 +111,7 @@ end
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  def create_property(num=1)
+  def create_property(num)
     num.times do |i|
       Property.create(title: "Property#{i}",
                       description: "This is property #{i}",
