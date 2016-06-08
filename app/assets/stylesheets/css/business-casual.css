@@ -40,6 +40,14 @@ hr {
    background: rgba(70, 72, 82, 0.3)
 }
 
+.muted-red {
+  background-color: #AB5653;
+}
+
+.text-white {
+  color: #F4F1ED
+}
+
 .brand,
 .address-bar {
     display: none;
