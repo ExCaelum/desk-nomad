@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "User logs in" do
-  scenario "existing user logs in" do
+RSpec.feature "User logss out" do
+  scenario "logged in user log out" do
     User.create(first_name: "Roger",
               last_name: "Smith",
               email: "rsmith@gmail.com",
@@ -25,8 +25,14 @@ RSpec.feature "User logs in" do
         expect(page).to have_content("Logout")
       end
 
+      click_on "Logout"
+
       within (".navbar") do
-        expect(page).to have_no_content("Login")
+        expect(page).to have_content("Sign In")
+      end
+
+      within (".navbar") do
+        expect(page).to have_no_content("Logged in as Roger")
       end
     end
-end
+  end
