@@ -14,10 +14,6 @@ RSpec.feature "Visitor Creates Account" do
     fill_in "Password confirmation", with: "password"
     click_on "Create Account"
 
-
-    # expect(page).to have_xpath("//dashboard")
-        #   Then my current page should be "/dashboard"
-
     within (".navbar") do
       expect(page).to have_content("Logged in as Roger")
     end
@@ -28,6 +24,16 @@ RSpec.feature "Visitor Creates Account" do
 
     within (".navbar") do
       expect(page).to have_no_content("Login")
+    end
+
+    expect(page).to have_content("My Dashboard")
+
+    within ("p:first") do
+      expect(page).to have_content("First Name: Roger")
+    end
+
+    within ("p:last") do
+      expect(page).to have_content("Email: rsmith@gmail.com")
     end
   end
 end
