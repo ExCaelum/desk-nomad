@@ -7,6 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">DeskNomad</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <% if current_user %>
+                  <li><a> Logged in as <%= current_user.first_name %></a></li>
+                  <li><a><%= link_to "Logout", logout_path, method: :delete %></a></li>
+                <% else %>
+                 <li><a><%= link_to "Sign In", login_path %></a></li>
+                 <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 Cart: <%= @cart.total_properties %>
 
@@ -14,7 +31,9 @@ Cart: <%= @cart.total_properties %>
   <%= content_tag :div, message %>
 <% end  %>
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
