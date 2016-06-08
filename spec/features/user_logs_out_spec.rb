@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "User logss out" do
-  scenario "logged in user log out" do
+RSpec.feature "User logs out" do
+  scenario "logged in user logs out" do
     User.create(first_name: "Roger",
               last_name: "Smith",
               email: "rsmith@gmail.com",
