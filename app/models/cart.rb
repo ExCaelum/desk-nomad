@@ -10,7 +10,7 @@ class Cart
     contents[property_id.to_s] += 1
   end
 
-  def total
+  def total_properties
     contents.values.sum
   end
 

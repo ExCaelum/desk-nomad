@@ -8,6 +8,12 @@
 </head>
 <body>
 
+Cart: <%= @cart.total_properties %>
+
+<% flash.each do |type, message|  %>
+  <%= content_tag :div, message %>
+<% end  %>
+
 <%= yield %>
 
 </body>
