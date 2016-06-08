@@ -39,7 +39,7 @@
 </nav> -->
 
 <div class="someDivOverlay"></div>
-<div class="brand">DeskNomad</div>
+<div class="brand">Desk Nomad</div>
 <div class="address-bar">1510 Blask St. | Denver, CO 80231 | 123.456.7890</div>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
@@ -59,7 +59,7 @@
       <ul class="nav navbar-nav">
         <li>
           <!-- <a href="index.html">Home</a> -->
-          <%= link_to "DeskNomad", root_path %>
+          <%= link_to "Desk Nomad", root_path %>
         </li>
         <li>
           <%= link_to "Properties", properties_path %>
@@ -74,12 +74,12 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li><a> Logged in as <%= current_user.first_name %></a></li>
-            <li><a><%= link_to "Logout", logout_path, method: :delete %></a></li>
+            <li> Logged in as <%= current_user.first_name %></li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
-           <li><a><%= link_to "Sign In", login_path %></a></li>
+           <li><%= link_to "Sign In", login_path %></li>
            <% end %>
-          <li>Cart: <%= @cart.total_properties %></li>
+           <li> <%= link_to "Bookings: #{@cart.total_properties}", cart_properties_path %></li>
       </ul>
       </div>
   </div>

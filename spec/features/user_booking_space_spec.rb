@@ -15,12 +15,12 @@ RSpec.feature "display cart contents" do
     click_on "Book It!"
 
     expect(page).to have_content("You have booked 1 space")
-    expect(page).to have_content("Cart: 1")
+    expect(page).to have_content("Bookings: 1")
 
     click_on "Book It!"
 
     expect(page).to have_content("You have booked 2 spaces")
-    expect(page).to have_content("Cart: 2")
+    expect(page).to have_content("Bookings: 2")
   end
 
   # scenario "user can view items in cart" do
