@@ -29,4 +29,8 @@ class Cart
     contents.values.sum
   end
 
+  def remove_property(prop_id)
+    contents.reject!{ |id| id == prop_id.to_s}
+  end
+
 end
