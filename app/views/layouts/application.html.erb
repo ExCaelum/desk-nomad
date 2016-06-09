@@ -20,27 +20,15 @@
 </head>
 
 <body>
-  <!-- <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">DeskNomad</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <% if current_user %>
-                  <li><a> Logged in as <%= current_user.first_name %></a></li>
-                  <li><a><%= link_to "Logout", logout_path, method: :delete %></a></li>
-                <% else %>
-                 <li><a><%= link_to "Sign In", login_path %></a></li>
-                 <% end %>
-            </ul>
-        </div>
-    </div>
-</nav> -->
 
 <div class="someDivOverlay"></div>
-<div class="brand">Desk Nomad</div>
-<div class="address-bar">1510 Blask St. | Denver, CO 80231 | 123.456.7890</div>
+<div class="brand">Desk Nomad
+</div>
+<div class="address-bar">1510 Blask St. | Denver, CO 80231 | 123.456.7890<br><br>
+<% if current_user %>
+<ul><%= link_to "Welcome #{current_user.first_name}", dashboard_path, class: "text-white" %></ul>
+<% end %>
+</div>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
 <!-- Brand and toggle get grouped for better mobile display -->
@@ -58,12 +46,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <!-- <a href="index.html">Home</a> -->
           <%= link_to "Desk Nomad", root_path %>
         </li>
         <li>
           <%= link_to "Properties", properties_path %>
-          <!-- <a href="about.html">About</a> -->
         </li>
         <li>
           <a href="blog.html">Blog</a>
@@ -74,7 +60,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li> Logged in as <%= current_user.first_name %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
            <li><%= link_to "Sign In", login_path %></li>
@@ -85,9 +70,23 @@
   </div>
 </nav>
 
-<% flash.each do |type, message|  %>
-<%= content_tag :div, sanitize(message) %>
-<% end  %>
+<% if !flash.empty? %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="box">
+        <div class="col-lg-12">
+          <hr class="black-line">
+          <h1 class="text-center">
+            <% flash.each do |type, message|  %>
+            <%= content_tag :div, sanitize(message) %>
+            <% end  %>
+          </h1>
+          <hr class="black-line"><br>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= yield %>
 
