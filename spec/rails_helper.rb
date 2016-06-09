@@ -112,14 +112,16 @@ end
   # config.filter_gems_from_backtrace("gem name")
 
   def create_property(num)
+    array = []
     num.times do |i|
-      Property.create(title: "Property#{i}",
+    array << Property.create(title: "Property#{i}",
                       description: "This is property #{i}",
                       price: 10,
                       image_file_name: "file_name.jpeg",
                       city: "Denver",
                       state: "Colorado")
       end
+      array
     end
 
   def create_category

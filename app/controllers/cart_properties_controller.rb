@@ -9,5 +9,10 @@ class CartPropertiesController < ApplicationController
     redirect_to property_path(property)
   end
 
+  def index
+    @cart
+    # @properties = @cart.return_properties
+  end
+
 
 end

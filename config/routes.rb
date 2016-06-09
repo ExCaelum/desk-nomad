@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :properties, only: [:index, :show]
 
-  resources :cart_properties, only: [:create]
+  resources :cart_properties, only: [:create, :index]
   resources :users, only: [:new, :create]
   get '/dashboard', to: 'users#show'
 
