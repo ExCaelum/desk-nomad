@@ -1,22 +1,31 @@
-<h3>Login</h3>
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+      <hr class="black-line">
+        <h1 class="intro-text text-center black">Login</h1>
+      <hr class="black-line">
+      <div class="row">
+        <%= form_for(:session, url: login_path) do |f| %>
 
-<div class = "container">
+          <%= f.label :username%>
+          <%= f.text_field :username, class: "form-control" %>
 
-<%= form_for(:session, url: login_path) do |f| %>
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control" %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Login" %>
-
-<% end %>
-
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+          <div class="row">
+            <br>
+            <div class="col-md-offset-1">
+              <%= f.submit "Login", class: "btn btn-default" %>
+              <%= link_to "Create Account", new_user_path, class: "btn btn-default" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "Create Account", new_user_path %>

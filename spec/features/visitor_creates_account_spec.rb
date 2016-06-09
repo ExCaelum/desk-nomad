@@ -14,8 +14,8 @@ RSpec.feature "Visitor Creates Account" do
     fill_in "Password confirmation", with: "password"
     click_on "Create Account"
 
-    within (".navbar") do
-      expect(page).to have_content("Logged in as Roger")
+    within (".address-bar") do
+      expect(page).to have_content("Welcome Roger")
     end
 
     within (".navbar") do
@@ -28,11 +28,11 @@ RSpec.feature "Visitor Creates Account" do
 
     expect(page).to have_content("My Dashboard")
 
-    within (".user_info") do
+    within (".user-info") do
       expect(page).to have_content("First Name: Roger")
     end
 
-    within (".user_info") do
+    within (".user-info") do
       expect(page).to have_content("Email: rsmith@gmail.com")
     end
   end

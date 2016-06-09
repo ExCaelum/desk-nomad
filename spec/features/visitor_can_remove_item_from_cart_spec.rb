@@ -15,8 +15,6 @@ RSpec.feature "visitor removes property" do
     expect(page).to have_link(property1.title)
 
     expect(page).to have_content("Your Cart")
-    within(".goodluck") do
-      expect(page).to_not have_content(property1.price)
-    end
+    expect(page).to_not have_content("#{property1.state} - $property1.price/Day")
   end
 end

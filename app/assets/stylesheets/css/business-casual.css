@@ -48,6 +48,14 @@ hr {
   color: #F4F1ED
 }
 
+.black-line {
+  border-top: 1px solid #060606;
+}
+
+.text-green {
+  color: #04580A
+}
+
 .brand,
 .address-bar {
     display: none;
