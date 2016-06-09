@@ -1,5 +1,5 @@
 class Property < ActiveRecord::Base
-  has_attached_file :image
+  has_attached_file :image, default_url: "desk1.png"
   belongs_to :category
 
   validates_attachment_content_type :image,
