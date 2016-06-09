@@ -39,4 +39,16 @@ RSpec.describe Cart, type: :model do
 
     expect(cart.total_properties).to eq(1)
   end
+
+  scenario "property can be removed from cart" do
+    property1, property2 = create_property(2)
+
+    cart = Cart.new({})
+
+    cart.add_property(property1.id)
+    cart.add_property(property2.id)
+    cart.remove_property(property1.id)
+
+    expect(cart.total_properties).to eq(1)
+  end
 end
