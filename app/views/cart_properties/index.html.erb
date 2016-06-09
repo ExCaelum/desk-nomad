@@ -8,3 +8,14 @@
 </div>
 
 $<%= @cart.cart_total %>
+
+<div class="container">
+  <ul>
+    <li id="user_checkout_message">
+      <% if current_user %> "Checkout"
+    </li>
+    <% else %>
+      <li><%= link_to "Login or Create Account to Checkout", login_path %></li>
+    <% end %>
+  </ul>
+</div>
