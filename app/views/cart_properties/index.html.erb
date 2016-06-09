@@ -1,6 +1,10 @@
-<% @cart.return_properties.each do |property| %>
-  <%= property.title %><br>
-  <%=property.price %>
-<% end %><br>
+<h1>Your Cart</h1>
+<div class="goodluck">
+  <% @cart.return_properties.each do |property| %>
+    <%= property.title %><br>
+    <%=property.price %>
+    <%= button_to "Remove Property", {controller: :cart_properties, action: :destroy, prop_id: property.id}, method: :delete %>
+  <% end %><br>
+</div>
 
 $<%= @cart.cart_total %>
