@@ -7,7 +7,6 @@ RSpec.feature "display cart contents" do
 
     category.properties << property1
 
-
     visit property_path(property1)
 
     expect(page).to have_content(property1.title)
