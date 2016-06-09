@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature 'visitor can see properties for a category' do
   scenario 'visitor visits category page' do
     category = Category.create(title: "Work Space", slug: "work-space")
-    create_property(2)
+    property1, property2 = create_property(2)
 
-    category.properties << Property.find(2)
-    category.properties << Property.find(3)
+    category.properties << property1
+    category.properties << property2 
 
     visit category_path(category)
 

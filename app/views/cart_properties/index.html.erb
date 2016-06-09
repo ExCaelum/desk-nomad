@@ -1,0 +1,6 @@
+<% @cart.return_properties.each do |property| %>
+  <%= property.title %><br>
+  <%=property.price %>
+<% end %><br>
+
+$<%= @cart.cart_total %>

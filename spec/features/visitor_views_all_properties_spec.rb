@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Visitor views all properties" do
   scenario "All properties are listed" do
-    num = create_property(2)
+    create_property(2)
 
     visit properties_path
 
