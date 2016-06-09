@@ -17,8 +17,8 @@ RSpec.feature "User logs in" do
       fill_in "Password confirmation", with: "password"
       click_on "Login"
 
-      within (".navbar") do
-        expect(page).to have_content("Logged in as Roger")
+      within (".address-bar") do
+        expect(page).to have_content("Welcome Roger")
       end
 
       within (".navbar") do

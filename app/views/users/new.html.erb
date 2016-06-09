@@ -6,7 +6,7 @@
         <h1 class="intro-text text-center black">Create Account</h1>
       <hr class="black-line">
       <div class="row">
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_for(@user) do |f| %>
 
           <%= f.label :first_name %>
           <%= f.text_field :first_name, class: "form-control" %>
