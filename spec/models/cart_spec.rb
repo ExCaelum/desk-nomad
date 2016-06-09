@@ -6,6 +6,8 @@ RSpec.describe Cart, type: :model do
 
     cart = Cart.new({property1.id => 1, property2.id => 2})
 
+    expect(cart.return_properties.first).to be_instance_of(PropertyExtractor)
+
     expect(cart.return_properties.first.title).to eq("Property0")
     expect(cart.return_properties.first.quantity).to eq(1)
     expect(cart.return_properties.second.total).to eq(20)
