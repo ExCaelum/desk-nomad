@@ -1,13 +1,25 @@
 <div class="container-fluid">
-  <div class="row text-center">
-    <h1>All Properties</h1>
-  </div>
+
   <div class="row">
-    <% @properties.each do |property| %>
-      <div class="col-md-3 text-center">
-        <%= image_tag property.image.url %><br>
-        <%=  property.title %>
+    <div class="box">
+      <div class="col-lg-12">
+        <hr class="black-line">
+        <h1 class="text-center">All Spaces
+            <h2 class="intro-text text-center"><strong>to showcase your content</strong></h2>
+        </h1>
+        <hr class="black-line"><br>
+        <div class="row">
+          <% @properties.each do |property| %>
+            <div class="col-md-3">
+              <div class="text-center">
+                <p style="background-color:#FDFDFD"><%= image_tag property.image.url %><br>
+                <%= link_to property.title, property_path(property), class: "text-muted" %><br>
+                <%= property.city %>, <%= property.state %> - $<%= property.price %>/Day</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
