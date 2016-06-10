@@ -25,4 +25,12 @@ RSpec.feature "registered admin can create account" do
     expect(page).to_not have_content("Admin Dashboard")
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end
+
+  scenario "visitor cannot access admin dashboard and sees 404" do
+    visit admin_dashboard_path
+
+    expect(page).to_not have_content("Admin Dashboard")
+    expect(page).to have_content("The page you were looking for doesn't exist.")
+  end
+  
 end
