@@ -24,7 +24,4 @@ RSpec.describe Category, type: :model do
 
     expect(cat.slug).to eq("work-space")
   end
-
-
-
 end
