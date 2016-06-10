@@ -16,6 +16,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    if current_admin?
+        redirect_to admin_dashboard_path
+    else
+      current_user
+    end
   end
 
   private
