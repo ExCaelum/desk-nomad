@@ -12,7 +12,7 @@
           <% @properties.each do |property| %>
             <div class="col-md-3">
               <div class="text-center">
-                <p style="background-color:#FDFDFD"><%= image_tag property.image.url %><br>
+                <p style="background-color:#FDFDFD"><%= link_to (image_tag property.image.url), property_path(property) %><br>
                 <%= link_to property.title, property_path(property), class: "text-muted" %><br>
                 <%= property.city %>, <%= property.state %> - $<%= property.price %>/Day</p>
               </div>

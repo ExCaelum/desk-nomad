@@ -145,4 +145,14 @@ end
               password: "password",
               password_confirmation: "password")
   end
+
+  def create_admin
+    User.create(first_name: "Nick",
+              last_name: "Pisciotta",
+              email: "np@gmail.com",
+              username: "nickpisciotta",
+              password: "password",
+              password_confirmation: "password",
+              role: 1)
+  end
 end
