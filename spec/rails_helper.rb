@@ -128,4 +128,13 @@ end
     Category.create(title: "Work Space")
   end
 
+  def create_user
+    User.create(first_name: "Roger",
+              last_name: "Smith",
+              email: "rsmith@gmail.com",
+              username: "turing123",
+              password: "password",
+              password_confirmation: "password")
+  end
+  
 end

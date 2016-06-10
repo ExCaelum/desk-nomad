@@ -1,10 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Cart, type: :model do
-  scenario "property method returns property objects" do
+  scenario "property method returns property extractor objects" do
     property1, property2 = create_property(2)
 
     cart = Cart.new({property1.id => 1, property2.id => 2})
+
+    expect(cart.return_properties.first).to be_instance_of(PropertyExtractor)
 
     expect(cart.return_properties.first.title).to eq("Property0")
     expect(cart.return_properties.first.quantity).to eq(1)
@@ -35,6 +37,21 @@ RSpec.describe Cart, type: :model do
 
     cart.add_property(property1.id)
 
+    expect(cart.total_properties).to eq(1)
+  end
+
+  scenario "property is removed from cart" do
+    property1, property2 = create_property(2)
+
+    cart = Cart.new({})
+
+    cart.add_property(property1.id)
+    cart.add_property(property2.id)
+    expect(cart.return_properties.first.title).to eq("Property0")
+
+    cart.remove_property(property1.id)
+
+    expect(cart.return_properties.first.title).to eq("Property1")
     expect(cart.total_properties).to eq(1)
   end
 end
