@@ -19,18 +19,23 @@ RSpec.feature "property can be retired" do
     end
   end
 
-  # scenario "retired property does not appear on property index page" do
-  #   property1, property2 = create_property(2)
-  #   property1.retire_property
-  #
-  #   visit properties_path
-  #   expect(page).to_not have_content(property1.title)
-  # end
+  scenario "retired property does not appear on property index page" do
+    property1, property2 = create_property(2)
+    property1.retire_property
 
+    visit properties_path
+    expect(page).to_not have_content(property1.title)
+  end
+
+  scenario "retired property does not appear on category page" do
+    category = create_category
+    property1, property2 = create_property(2)
+    category.properties << property1
+    category.properties << property2
+
+    property1.retire_property
+
+    visit category_path(category)
+    expect(page).to_not have_content(property1.title)
+  end
 end
-
-# As a user if I visit an item page and that item has been retired
-# Then I should still be able to access the item page
-# And I should not be able to add the item to their cart
-# And I should see in place of the "Add to Cart"
-# button or link - "Item Retired"

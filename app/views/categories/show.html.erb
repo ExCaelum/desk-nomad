@@ -9,7 +9,7 @@
         </h1>
         <hr class="black-line"><br>
         <div class="row">
-          <% @category.properties.each do |property| %>
+          <% @category.properties.active.each do |property| %>
             <div class="col-md-3">
               <div class="text-center">
                 <p style="background-color:#FDFDFD"><%= image_tag property.image.url %><br>
