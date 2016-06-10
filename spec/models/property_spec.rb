@@ -11,4 +11,26 @@ RSpec.describe Property, type: :model do
   it {should validate_presence_of(:state) }
   it {should belong_to(:category) }
 
+  scenario "it returns active properties" do
+    property1, property2  = create_property(2)
+    property1.retire_property
+
+    expect(Property.active.count).to eq(1)
+    expect(Property.active.first.title).to eq("Property1")
+  end
+
+  scenario "it retires property" do
+    property  = create_one_property
+    property.retire_property
+
+    expect(property.status).to eq("retired")
+  end
+
+  scenario "it identifies retired property" do
+    property  = create_one_property
+    property.retire_property
+
+    expect(property.retired?).to eq(true)
+  end
+
 end

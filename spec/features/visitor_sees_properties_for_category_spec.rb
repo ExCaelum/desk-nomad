@@ -15,11 +15,11 @@ RSpec.feature "visitor can see properties for a category" do
     end
 
     within (".col-md-3:first") do
-      expect(page).to have_content("Property0")
+      expect(page).to have_content("Property1")
     end
 
     within (".col-md-3:last") do
-      expect(page).to have_content("Property1")
+      expect(page).to have_content("Property0")
     end
   end
 end

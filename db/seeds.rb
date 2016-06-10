@@ -27,3 +27,4 @@ category2.properties.create(title: "Second Property",
                              price: 30,
                              city: "Seattle",
                              state: "Washington" )
+                             
