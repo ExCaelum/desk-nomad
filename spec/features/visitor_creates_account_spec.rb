@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Visitor Creates Account" do
   scenario "visitor creates account; sees user dasboard" do

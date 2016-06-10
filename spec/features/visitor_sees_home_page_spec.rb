@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Visitor sees home page" do
   scenario "visits root path sees home page" do

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "display cart contents" do
   scenario "as spaces are booked, cart total increases" do

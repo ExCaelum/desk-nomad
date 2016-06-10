@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "visitor removes property" do
   scenario "visitor can remove an property from their cart" do
