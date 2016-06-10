@@ -6,7 +6,13 @@
         <hr class="black-line">
         <h1 class="row text-center"> <%= image_tag @property.image.url %>
             <h2 class="intro-text text-center"><strong> <%= @property.title %> - <%= @property.city %>, <%= @property.state %> </strong></h2>
-            <h2 class="text-center"> <%= link_to "Book It!", cart_properties_path(property_id: @property.id), method: :post, class: "btn btn-sm text-white muted-red" %> </h2>
+            <h2 class="text-center" id="active-retired">
+            <% if @property.retired? %>
+               Property Unavailable
+            <% else %>
+              <%= link_to "Book It!", cart_properties_path(property_id: @property.id), method: :post, class: "btn btn-sm text-white muted-red" %>
+            <% end %>
+            </h2>
         </h1>
         <hr class="black-line">
         <div class="row">
