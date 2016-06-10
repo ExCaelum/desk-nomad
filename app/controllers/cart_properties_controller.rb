@@ -21,5 +21,14 @@ class CartPropertiesController < ApplicationController
     redirect_to cart_path
   end
 
+  def update
+    property = Property.find(params[:id])
+    quantity = params[params[:id]].values.first.to_i
+    @cart.contents[params[:id]] = quantity
+    redirect_to cart_path
+    flash[:sucess] = "Successfully updated quantity for #{property.title} to #{quantity}."
+  end
+
+
 
 end
