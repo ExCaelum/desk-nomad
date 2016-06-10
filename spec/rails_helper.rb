@@ -124,6 +124,15 @@ end
       array
     end
 
+  def create_one_property
+    Property.create(title: "Property0",
+                      description: "This is property 0",
+                      price: 10,
+                      image_file_name: "file_name.jpeg",
+                      city: "Denver",
+                      state: "Colorado")
+  end
+
   def create_category
     Category.create(title: "Work Space")
   end
@@ -136,5 +145,5 @@ end
               password: "password",
               password_confirmation: "password")
   end
-  
+
 end
