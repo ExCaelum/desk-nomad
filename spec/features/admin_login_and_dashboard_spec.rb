@@ -14,4 +14,15 @@ RSpec.feature "registered admin can create account" do
       expect(page).to have_content("Welcome, #{admin.first_name}")
     end
   end
+
+  scenario "Non-admin user cannot view admin dashboard" do
+    user = create_user
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit admin_dashboard_path
+
+    expect(page).to_not have_content("Admin Dashboard")
+    expect(page).to have_content("The page you were looking for doesn't exist.")
+  end
 end
