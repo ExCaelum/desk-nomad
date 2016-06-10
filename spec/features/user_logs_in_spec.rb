@@ -11,6 +11,8 @@ RSpec.feature "User logs in" do
     fill_in "Password", with: "password"
     click_on "Login"
 
+    expect(current_path).to eq("/dashboard")
+
     within (".address-bar") do
       expect(page).to have_content("Welcome Roger")
     end
