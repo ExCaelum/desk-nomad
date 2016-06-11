@@ -21,4 +21,5 @@ Rails.application.routes.draw do
 
   get "/:slug", to: "categories#show", as: 'category'
 
+  get '*path' => redirect('/')
 end
