@@ -10,8 +10,9 @@
           <% @orders.each do |order| %>
             <div class="col-md-3">
               <div class="text-center">
-                <p style="background-color:#FDFDFD">Order #<%= order.id %><br>
-                 </p>
+                <p style="background-color:#FDFDFD"> <%= link_to "Order ##{order.id}", order_path(order) %> - 
+                 Total $<%= order.total %>
+               </p>
               </div>
             </div>
           <% end %>

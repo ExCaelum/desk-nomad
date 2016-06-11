@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   get '/dashboard', to: 'users#show'
 
-  post '/orders', to: "orders#create"
-  get '/orders', to: "orders#index"
+  resources :orders, only: [:create, :index, :show]
+  # post '/orders', to: "orders#create"
+  # get '/orders', to: "orders#index"
+  # get '/show', to: "orders#show"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

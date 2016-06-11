@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "User can checkout" do
-  scenario "Authenticated user can checkout and create an order" do
+RSpec.feature "User sees details for an order" do
+  scenario "User sees details about a specific order" do
     User.create(first_name: "Roger",
               last_name: "Smith",
               email: "rsmith@gmail.com",
@@ -32,27 +32,11 @@ RSpec.feature "User can checkout" do
     expect(current_path).to eq("/orders")
     expect(page).to have_content("Order was successfully placed")
     expect(page).to have_content("Order ##{Order.first.id}")
+    click_link "Order #2"
+    expect(current_path).to eq("/orders/2")
+    expect(page).to have_content("Property0")
+    expect(page).to have_content(Order.first.orders_properties.first.quantity)
+    expect(page).to have_content("Ordered")
+
   end
 end
-
-# class UserCanCheckoutTest < ActionDispatch::IntegrationTest
-#   test "checking out creates an order and order items" do
-#     create_categories
-#     create_items
-#     create_user
-#     visit "/items"
-#     click_on "Add to Cart"
-#
-#     find(:xpath, "//a[@href='/cart']").click
-#     click_on "Login"
-#     fill_in "E-Mail", with: User.first.email
-#     fill_in "Password", with: "password"
-#     click_on "Log in"
-#     assert_equal "/cart", current_path
-#     click_on "Place Order"
-#     assert_equal "/orders", current_path
-#     assert page.has_content? "Order was successfully placed"
-#     order = Order.first
-#     assert page.has_content? "Order number : #{order.id}"
-#   end
-# end
