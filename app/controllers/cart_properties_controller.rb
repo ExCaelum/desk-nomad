@@ -11,7 +11,6 @@ class CartPropertiesController < ApplicationController
 
   def index
     @cart
-    # @properties = @cart.return_properties
   end
 
   def destroy
