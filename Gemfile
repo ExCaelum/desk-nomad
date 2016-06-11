@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'paperclip'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'mail_form'
+gem 'simple_form'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

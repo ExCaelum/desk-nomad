@@ -15,6 +15,9 @@ Rails.application.routes.draw do
    resource :dashboard, only:[:show]
   end
 
+  resources :contacts, only: [:new, :create]
+  get '/contacts', to: 'contacts#new'
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete '/logout', to: 'sessions#destroy'
