@@ -18,8 +18,9 @@ class UsersController < ApplicationController
     @user = current_user
     if current_admin?
         redirect_to admin_dashboard_path
+    elsif current_user
     else
-      current_user
+      render file: "/public/404"
     end
   end
 
