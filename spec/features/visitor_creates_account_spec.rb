@@ -36,4 +36,20 @@ RSpec.feature "Visitor Creates Account" do
       expect(page).to have_content("Email: rsmith@gmail.com")
     end
   end
+
+  scenario "visitor attempts account creation with invalid information" do
+
+    visit login_path
+
+    click_on "Create Account"
+    fill_in "First name", with: "Roger"
+    fill_in "Last name", with: "Smith"
+    fill_in "Email", with: "rsmith@gmail.com"
+    fill_in "Username", with: "turing123"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "p"
+    click_on "Create Account"
+
+    expect(page).to have_content("Password confirmation doesn't match Password")
+  end
 end
