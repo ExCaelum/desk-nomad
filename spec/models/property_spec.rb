@@ -10,6 +10,8 @@ RSpec.describe Property, type: :model do
   it {should validate_presence_of(:city) }
   it {should validate_presence_of(:state) }
   it {should belong_to(:category) }
+  it {should have_many(:orders_properties)}
+  it {should have_many(:orders)}
 
   scenario "it returns active properties" do
     property1, property2  = create_property(2)

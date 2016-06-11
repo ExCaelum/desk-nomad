@@ -1,6 +1,8 @@
 class Property < ActiveRecord::Base
   has_attached_file :image, default_url: "desk1-thumb.png"
   belongs_to :category
+  has_many :orders_properties
+  has_many :orders, through: :orders_properties
 
   validates_attachment_content_type :image,
                                     :content_type =>
