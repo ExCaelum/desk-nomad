@@ -23,9 +23,8 @@ RSpec.feature "User sees details for an order" do
 
     fill_in "Username", with: "turing123"
     fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
     click_on "Login"
-    expect(page).to have_content("Hello Roger")
+    expect(page).to have_content("Roger")
     click_link "Bookings"
     expect(current_path).to eq("/cart")
     click_link "Checkout"

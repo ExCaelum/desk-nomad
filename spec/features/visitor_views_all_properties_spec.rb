@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Visitor views all properties" do
   scenario "All properties are listed" do

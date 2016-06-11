@@ -9,13 +9,19 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/dashboard"
     else
-      flash.now[:error] = "Invalid Entry"
+      flash.now[:error] = "#{@user.errors.full_messages.join(", ")}"
       render :new
     end
   end
 
   def show
     @user = current_user
+    if current_admin?
+        redirect_to admin_dashboard_path
+    elsif current_user
+    else
+      render file: "/public/404"
+    end
   end
 
   private

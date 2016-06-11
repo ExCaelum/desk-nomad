@@ -5,7 +5,7 @@ class OrdersProperty < ActiveRecord::Base
   validates :quantity, presence: true
 
   def find_property
-    Property.find(self.property)
+    Property.find(self.property.id)
   end
 
   def total

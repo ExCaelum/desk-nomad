@@ -55,9 +55,10 @@ ActiveRecord::Schema.define(version: 20160611210006) do
     t.datetime "image_updated_at"
     t.string   "city"
     t.string   "state"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "category_id"
+    t.string   "status",             default: "active"
   end
 
   add_index "properties", ["category_id"], name: "index_properties_on_category_id", using: :btree
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160611210006) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "role"
   end
 
   add_foreign_key "orders", "users"
