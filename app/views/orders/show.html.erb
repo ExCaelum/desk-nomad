@@ -6,7 +6,11 @@
         <hr class="black-line">
         <h1 class="text-center">Order #<%= @order.id %></h1>
         <h2 class="intro-text text-center"><strong>Total: $<%= @order.total %> <br>
-          Created At: <%= @order.created_at.strftime("%b %e, %l:%M %p") %> </strong></h2>
+          Created At -  <%= @order.created_at.strftime("%b %e, %l:%M %p") %> <br>
+          <% if @order.status != "ordered" %>
+            Updated At - <%= @order.updated_at.strftime("%b %e, %l:%M %p") %>
+          <% end %>
+        </strong></h2>
         <hr class="black-line"><br>
         <div class="row">
           <% @order.orders_properties.each do |order_prop| %>
