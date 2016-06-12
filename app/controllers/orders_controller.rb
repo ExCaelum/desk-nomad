@@ -22,10 +22,10 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user
+    if current_user.id == params[:user_id]
       @order = Order.find(params[:id])
     else
-      flash.now[:error] = "#{@order.errors.full_messages.join(", ")}"
+      render file: "/public/404"
     end
   end
 

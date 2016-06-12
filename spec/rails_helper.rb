@@ -146,6 +146,16 @@ end
               password_confirmation: "password")
   end
 
+  def create_second_user
+    User.create(first_name: "Taylor",
+              last_name: "Swift",
+              email: "tswift@hotmail.com",
+              username: "tswift",
+              password: "password2",
+              password_confirmation: "password2")
+  end
+
+
   def create_admin
     User.create(first_name: "Nick",
               last_name: "Pisciotta",
