@@ -1,13 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "User sees details for an order" do
   scenario "User sees details about a specific order" do
-    User.create(first_name: "Roger",
-              last_name: "Smith",
-              email: "rsmith@gmail.com",
-              username: "turing123",
-              password: "password",
-              password_confirmation: "password")
+    create_user
     category = create_category
     property0, property1 = create_property(2)
     category.properties << property0
@@ -36,6 +31,5 @@ RSpec.feature "User sees details for an order" do
     expect(page).to have_content("Property0")
     expect(page).to have_content(Order.first.orders_properties.first.quantity)
     expect(page).to have_content("Ordered")
-
   end
 end
