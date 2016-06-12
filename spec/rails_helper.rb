@@ -155,7 +155,6 @@ end
               password_confirmation: "password2")
   end
 
-
   def create_admin
     User.create(first_name: "Nick",
                 last_name: "Pisciotta",

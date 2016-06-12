@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "/cart", to: "cart_properties#destroy"
   patch "/cart", to: "cart_properties#update"
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   get '/dashboard', to: 'users#show'
 
   resources :orders, only: [:create, :index, :show]
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   namespace :admin do
    resource :dashboard, only:[:show]
   end
+
+  resources :contacts, only: [:new, :create]
+  get '/contacts', to: 'contacts#new'
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

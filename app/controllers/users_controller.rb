@@ -24,6 +24,22 @@ class UsersController < ApplicationController
     end
   end
 
+    def edit
+      @user = current_user
+    end
+
+    def update
+      if current_user.update(user_params)
+        flash.now[:success] = "Successfully updated account with new information"
+        redirect_to dashboard_path
+      else
+        @user = current_user
+        flash.now[:error] = "Update was not made"
+        render :edit
+      end
+    end
+
+
   private
 
   def user_params
