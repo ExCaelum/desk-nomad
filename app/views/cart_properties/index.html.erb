@@ -8,7 +8,7 @@
             <h2 class="intro-text text-center"><strong>All items in your cart - Total: $<%= @cart.cart_total %> <br>
               <ul id="user_checkout_message">
                 <% if current_user %>
-                 Checkout
+                <%= link_to "Checkout", orders_path, method: :post %>
               </ul>
               <% else %>
                 <ul><%= link_to "Login or Create Account to Purchase", login_path %></ul>
@@ -22,7 +22,12 @@
                 <p style="background-color:#FDFDFD"><%= image_tag property.image.url %><br>
                 <%= link_to property.title, property_path(property), class: "text-muted" %> - <%= property.quantity %> Days<br>
                 <%= property.city %>, <%= property.state %> - $<%= property.price %>/Day<br>
-                $<%= property.total %> total <%= button_to "Remove Property", {controller: :cart_properties, action: :destroy, prop_id: property.id}, method: :delete, class: "btn btn-sm text-white muted-red" %></p>
+                $<%= property.total %> total <%= button_to "Remove Property", {controller: :cart_properties, action: :destroy, prop_id: property.id}, method: :delete, class: "btn btn-sm text-white muted-red" %>
+                <%= form_tag(cart_path(id: property.id), method: :patch) do %>
+                    <%= select property.id, property.quantity, (1..10).to_a, selected: property.quantity %>
+                    <%= submit_tag "Update Quantity" %>
+                <% end  %>
+                </p>
               </div>
             </div>
           <% end %>

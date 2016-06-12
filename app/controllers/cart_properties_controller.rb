@@ -11,7 +11,6 @@ class CartPropertiesController < ApplicationController
 
   def index
     @cart
-    # @properties = @cart.return_properties
   end
 
   def destroy
@@ -20,6 +19,15 @@ class CartPropertiesController < ApplicationController
     flash[:success] = "Successfully removed #{view_context.link_to property.title, property_path(property), class: "text-green"} from your cart."
     redirect_to cart_path
   end
+
+  def update
+    property = Property.find(params[:id])
+    quantity = params[params[:id]].values.first.to_i
+    @cart.contents[params[:id]] = quantity
+    redirect_to cart_path
+    flash[:sucess] = "Successfully updated quantity for #{property.title} to #{quantity}."
+  end
+
 
 
 end
