@@ -29,7 +29,7 @@ RSpec.describe Property, type: :model do
   end
 
   scenario "it identifies retired property" do
-    property  = create_one_property
+    property = create_one_property
     property.retire_property
 
     expect(property.retired?).to eq(true)

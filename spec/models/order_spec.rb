@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Order, type: :model do
-  it {should validate_presence_of(:user_id)}
-  it {should belong_to(:user)}
-  it {should have_many(:orders_properties)}
-  it {should have_many(:properties)}
+  it { should validate_presence_of(:user_id) }
+  it { should belong_to(:user) }
+  it { should have_many(:orders_properties) }
+  it { should have_many(:properties) }
 end
