@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
   get '/dashboard', to: 'users#show'
 
+  resources :orders, only: [:create, :index, :show]
+  # post '/orders', to: "orders#create"
+  # get '/orders', to: "orders#index"
+  # get '/show', to: "orders#show"
   namespace :admin do
    resource :dashboard, only:[:show]
   end

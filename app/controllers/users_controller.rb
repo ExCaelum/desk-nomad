@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/dashboard"
     else
-      flash.now[:error] = "Invalid Entry"
+      flash.now[:error] = "#{@user.errors.full_messages.join(", ")}"
       render :new
     end
   end

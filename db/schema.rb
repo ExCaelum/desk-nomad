@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160611230641) do
+
+# ActiveRecord::Schema.define(version: 20160611210006) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +34,26 @@ ActiveRecord::Schema.define(version: 20160611230641) do
     t.string "email"
     t.text   "message"
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "orders_properties", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "order_id"
+    t.string   "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "orders_properties", ["order_id"], name: "index_orders_properties_on_order_id", using: :btree
+  add_index "orders_properties", ["property_id"], name: "index_orders_properties_on_property_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.string   "title"
@@ -60,5 +84,8 @@ ActiveRecord::Schema.define(version: 20160611230641) do
     t.integer  "role"
   end
 
+  add_foreign_key "orders", "users"
+  add_foreign_key "orders_properties", "orders"
+  add_foreign_key "orders_properties", "properties"
   add_foreign_key "properties", "categories"
 end
