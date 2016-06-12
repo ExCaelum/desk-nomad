@@ -9,8 +9,8 @@ RSpec.describe Category, type: :model do
     cat1 = Category.create(:title => 'Work Space')
     cat2 = Category.create(:title => cat1.title)
 
-    expect(cat1.valid?).to be_truthy
-    expect(cat2.valid?).to be_falsy
+    expect(cat1).to be_valid
+    expect(cat2).to_not be_valid
   end
 
   scenario "test to_param override" do
@@ -24,7 +24,4 @@ RSpec.describe Category, type: :model do
 
     expect(cat.slug).to eq("work-space")
   end
-
-
-
 end

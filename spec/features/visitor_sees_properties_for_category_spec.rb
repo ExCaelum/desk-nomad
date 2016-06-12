@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.feature 'visitor can see properties for a category' do
-  scenario 'visitor visits category page' do
-    category = Category.create(title: "Work Space", slug: "work-space")
+RSpec.feature "visitor can see properties for a category" do
+  scenario "visitor visits category page" do
+    category = create_category
     property1, property2 = create_property(2)
 
     category.properties << property1
-    category.properties << property2 
+    category.properties << property2
 
     visit category_path(category)
 
@@ -15,11 +15,11 @@ RSpec.feature 'visitor can see properties for a category' do
     end
 
     within (".col-md-3:first") do
-      expect(page).to have_content("Property0")
+      expect(page).to have_content("Property1")
     end
 
     within (".col-md-3:last") do
-      expect(page).to have_content("Property1")
+      expect(page).to have_content("Property0")
     end
   end
 end

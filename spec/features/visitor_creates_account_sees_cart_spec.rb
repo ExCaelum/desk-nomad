@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "visitor creates account, sees cart" do
   scenario "visitor creates account to checkout" do
-    category = Category.create(title: "Work Space", slug: "work-space")
+    category = create_category
     property1, property2 = create_property(2)
     category.properties << property1
 

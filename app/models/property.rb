@@ -16,6 +16,16 @@ class Property < ActiveRecord::Base
                     numericality: true
   validates :city, presence: true
   validates :state, presence: true
+  scope :active, -> { where(status: "active")}
 
+  def retired?
+    if status == "retired"
+      true
+    end
+  end
+
+  def retire_property
+    update(status: "retired")
+  end
 
 end

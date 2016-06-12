@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cart_properties, only: [:create]
   get "/cart", to: "cart_properties#index"
   delete "/cart", to: "cart_properties#destroy"
+  patch "/cart", to: "cart_properties#update"
 
   resources :users, only: [:new, :create]
   get '/dashboard', to: 'users#show'
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   # post '/orders', to: "orders#create"
   # get '/orders', to: "orders#index"
   # get '/show', to: "orders#show"
+  namespace :admin do
+   resource :dashboard, only:[:show]
+  end
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -21,4 +25,5 @@ Rails.application.routes.draw do
 
   get "/:slug", to: "categories#show", as: 'category'
 
+  get '*path' => redirect('/')
 end
