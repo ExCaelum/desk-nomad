@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608025826) do
+
+ActiveRecord::Schema.define(version: 20160611230641) do
+
+# ActiveRecord::Schema.define(version: 20160611210006) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +29,32 @@ ActiveRecord::Schema.define(version: 20160608025826) do
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text   "message"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "orders_properties", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "order_id"
+    t.string   "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "orders_properties", ["order_id"], name: "index_orders_properties_on_order_id", using: :btree
+  add_index "orders_properties", ["property_id"], name: "index_orders_properties_on_property_id", using: :btree
+
   create_table "properties", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -35,9 +65,10 @@ ActiveRecord::Schema.define(version: 20160608025826) do
     t.datetime "image_updated_at"
     t.string   "city"
     t.string   "state"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "category_id"
+    t.string   "status",             default: "active"
   end
 
   add_index "properties", ["category_id"], name: "index_properties_on_category_id", using: :btree
@@ -50,7 +81,11 @@ ActiveRecord::Schema.define(version: 20160608025826) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "role"
   end
 
+  add_foreign_key "orders", "users"
+  add_foreign_key "orders_properties", "orders"
+  add_foreign_key "orders_properties", "properties"
   add_foreign_key "properties", "categories"
 end
