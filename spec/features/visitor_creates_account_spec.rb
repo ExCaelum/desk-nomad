@@ -38,7 +38,6 @@ RSpec.feature "Visitor Creates Account" do
   end
 
   scenario "visitor attempts account creation with invalid information" do
-
     visit login_path
 
     click_on "Create Account"

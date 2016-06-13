@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User logs out" do
   scenario "logged in user logs out" do
-    create_user
+      create_user
 
       visit login_path
 

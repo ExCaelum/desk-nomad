@@ -1,7 +1,11 @@
 class PropertiesController < ApplicationController
 
   def index
-    @properties = Property.active
+    if params[:city]
+      @properties = Property.active.search(params[:city])
+    else
+      @properties = Property.active
+    end
   end
 
   def show

@@ -1,9 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe OrdersProperty, type: :model do
-
-  it { should belong_to(:property)}
-  it { should belong_to(:order)}
+  it { should belong_to(:property) }
+  it { should belong_to(:order) }
 
   scenario "the order_property calculates it total" do
     user = User.create(first_name: "Roger",

@@ -17,6 +17,7 @@ class Property < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   scope :active, -> { where(status: "active")}
+  scope :search, -> (city) {where(city: city)}
 
   def retired?
     if status == "retired"
@@ -27,5 +28,6 @@ class Property < ActiveRecord::Base
   def retire_property
     update(status: "retired")
   end
+
 
 end

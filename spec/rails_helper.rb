@@ -115,22 +115,22 @@ end
     array = []
     num.times do |i|
     array << Property.create(title: "Property#{i}",
-                      description: "This is property #{i}",
-                      price: 10,
-                      image_file_name: "file_name.jpeg",
-                      city: "Denver",
-                      state: "Colorado")
+                             description: "This is property #{i}",
+                             price: 10,
+                             image_file_name: "file_name.jpeg",
+                             city: "Denver",
+                             state: "Colorado")
       end
       array
     end
 
   def create_one_property
     Property.create(title: "Property0",
-                      description: "This is property 0",
-                      price: 10,
-                      image_file_name: "file_name.jpeg",
-                      city: "Denver",
-                      state: "Colorado")
+                    description: "This is property 0",
+                    price: 10,
+                    image_file_name: "file_name.jpeg",
+                    city: "Denver",
+                    state: "Colorado")
   end
 
   def create_category
@@ -139,20 +139,29 @@ end
 
   def create_user
     User.create(first_name: "Roger",
-              last_name: "Smith",
-              email: "rsmith@gmail.com",
-              username: "turing123",
-              password: "password",
-              password_confirmation: "password")
+                last_name: "Smith",
+                email: "rsmith@gmail.com",
+                username: "turing123",
+                password: "password",
+                password_confirmation: "password")
+  end
+
+  def create_second_user
+    User.create(first_name: "Taylor",
+              last_name: "Swift",
+              email: "tswift@hotmail.com",
+              username: "tswift",
+              password: "password2",
+              password_confirmation: "password2")
   end
 
   def create_admin
     User.create(first_name: "Nick",
-              last_name: "Pisciotta",
-              email: "np@gmail.com",
-              username: "nickpisciotta",
-              password: "password",
-              password_confirmation: "password",
-              role: 1)
+                last_name: "Pisciotta",
+                email: "np@gmail.com",
+                username: "nickpisciotta",
+                password: "password",
+                password_confirmation: "password",
+                role: 1)
   end
 end
