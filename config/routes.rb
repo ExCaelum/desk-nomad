@@ -28,5 +28,9 @@ Rails.application.routes.draw do
 
   get "/:slug", to: "categories#show", as: 'category'
 
+  # get '/auth/facebook/callback', to: 'sessions#create'
+  # get '/auth/failure', to: redirect('/')
+
+
   get '*path' => redirect('/')
 end
