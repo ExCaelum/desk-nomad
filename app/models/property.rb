@@ -27,9 +27,5 @@ class Property < ActiveRecord::Base
     update(status: "retired")
   end
 
-  def self.search(city)
-      where(city: city)
-  end
-
 
 end
