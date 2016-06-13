@@ -54,4 +54,12 @@ RSpec.describe Cart, type: :model do
     expect(cart.return_properties.first.title).to eq("Property1")
     expect(cart.total_properties).to eq(1)
   end
+
+  scenario "total cost of items in cart returned" do
+    property1, property2 = create_property(2)
+
+    cart = Cart.new({property1.id => 1, property2.id => 2})
+
+    expect(cart.cart_total).to eq(30)
+  end
 end

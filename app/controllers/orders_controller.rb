@@ -11,13 +11,16 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new
-    if @order.save
+    cart_checker = CartChecker.new(@cart)
+    if cart_checker.check_cart
+      @order.save
       @order.confirm_order(@cart)
       session.delete :cart
       flash[:success] = "Order was successfully placed"
       redirect_to orders_path
     else
-      redirect_to login_path
+      flash[:success] = "Please add items to your cart before checking out"
+      redirect_to "/cart"
     end
   end
 
