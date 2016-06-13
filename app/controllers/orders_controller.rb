@@ -11,8 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new
-    cart_checker = CartChecker.new(@cart)
-    if cart_checker.check_cart
+    if @cart.has_contents
       @order.save
       @order.confirm_order(@cart)
       session.delete :cart

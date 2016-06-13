@@ -5,6 +5,14 @@ class Cart
     @contents = initial_contents || {}
   end
 
+  def has_contents
+    if @contents.empty?
+      false
+    else
+      true
+    end
+  end
+
   def add_property(property_id)
     contents[property_id.to_s] ||= 0
     contents[property_id.to_s] += 1
