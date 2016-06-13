@@ -28,6 +28,4 @@ class Property < ActiveRecord::Base
   def retire_property
     update(status: "retired")
   end
-
-
 end

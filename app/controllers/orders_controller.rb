@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    byebug
     if current_user.id == params[:user_id]
       @order = Order.find(params[:id])
     else
