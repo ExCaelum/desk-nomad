@@ -31,6 +31,10 @@ gem 'paperclip'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'mail_form'
 gem 'simple_form'
+gem 'font-awesome-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-oauth2'
+gem 'figaro'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
