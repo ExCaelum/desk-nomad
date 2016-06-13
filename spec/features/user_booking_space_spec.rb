@@ -47,23 +47,16 @@ RSpec.feature "display cart contents" do
 
     within(".col-md-3:first") do
       expect(page).to have_content(property1.title)
-    end
-
-    within(".col-md-3:first") do
       expect(page).to have_content(property1.price)
     end
 
     within(".col-md-3:nth-child(2)") do
       expect(page).to have_content(property2.title)
-    end
-
-    within(".col-md-3:nth-child(2)") do
       expect(page).to have_content(property2.price)
     end
 
     within(".intro-text") do
       expect(page).to have_content("$20")
     end
-
   end
 end
