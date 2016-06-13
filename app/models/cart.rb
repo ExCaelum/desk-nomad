@@ -20,9 +20,7 @@ class Cart
 
   def return_properties
     @contents.map do |property_id, quantity|
-      space = Property.find(property_id)
-      price = space.price
-      PropertyExtractor.new(space, quantity)
+    PropertyExtractor.new(property_id, quantity)
     end
   end
 
