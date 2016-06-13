@@ -27,7 +27,6 @@ RSpec.feature "User sees details for an order" do
     expect(page).to have_content("Order was successfully placed")
     expect(page).to have_content("Order ##{Order.first.id}")
     click_link "Order #3"
-    save_and_open_page
     expect(current_path).to eq("/orders/3")
     expect(page).to have_content("Property0")
     expect(page).to have_content(Order.first.orders_properties.first.quantity)
