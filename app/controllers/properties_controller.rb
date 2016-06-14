@@ -9,6 +9,22 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def new
+    @property = Property.new
+  end
+
+  def create
+    @category = Category.find_by(title: params[:property][:category])
+    @property = @category.properties.create(property_params)
+    if @property.save
+      flash[:success] = "Property Created Sucessfully"
+      redirect_to properties_path
+    else
+      flash[:error] = "Property was unable to be created"
+      render :new
+    end
+  end
+
   def show
     @property = Property.find(params[:id])
   end
@@ -25,7 +41,8 @@ class PropertiesController < ApplicationController
 private
   def property_params
     params.require(:property).permit(:title, :description, :price,
-                                     :image, :city, :state, :category_id, :status)
+                                     :property_image, :city, :state,
+                                     :category_id, :status)
   end
 
 end
