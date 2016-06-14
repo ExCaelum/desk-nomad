@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    self.orders_properties.map do |order_prop|
+    orders_properties.map do |order_prop|
       order_prop.property.price * order_prop.quantity.to_i
     end.reduce(:+)
   end
