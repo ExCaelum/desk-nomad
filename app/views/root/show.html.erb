@@ -39,7 +39,7 @@
         <h2>
           <%= form_tag properties_path, :method => 'get' do %>
           <p>
-            <h3><%= label_tag :city, "Find Space By City", class: "label-success" %></h3>
+            <h3>Find Space By City</h3>
             <%= select_tag :city, options_for_select(@property_cities), class: "search" %>
             <%= submit_tag "Search", :name => nil, class: "btn text-white muted-red button-move" %>
           </p>
