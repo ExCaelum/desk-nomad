@@ -8,6 +8,9 @@ RSpec.feature "User can checkout" do
               username: "turing123",
               password: "password",
               password_confirmation: "password")
+
+
+              
     category = create_category
     property0, property1 = create_property(2)
     category.properties << property0
@@ -25,6 +28,9 @@ RSpec.feature "User can checkout" do
     fill_in "Password", with: "password"
     click_on "Login"
     expect(page).to have_content("Roger")
+
+
+
     click_link "Bookings"
     expect(current_path).to eq("/cart")
     click_link "Checkout"
