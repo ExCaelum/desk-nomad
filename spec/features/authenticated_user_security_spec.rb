@@ -7,14 +7,7 @@ RSpec.feature "Authorized user doesn't have acesss to another user's data" do
     user_two_order = user_two.orders.new(status: "ordered")
     user_two_order.save
 
-    visit login_path
-
-    click_on "Login"
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    expect(current_path).to eq("/dashboard")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_one)
 
     visit "/orders"
     expect(page).to have_content("Welcome Roger")
@@ -26,16 +19,9 @@ RSpec.feature "Authorized user doesn't have acesss to another user's data" do
   end
 
   scenario "user cannot access admin functionality/views" do
-    create_user
+    user = create_user
 
-    visit login_path
-
-    click_on "Login"
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    expect(current_path).to eq("/dashboard")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit "/admin"
 
@@ -43,16 +29,9 @@ RSpec.feature "Authorized user doesn't have acesss to another user's data" do
   end
 
   scenario "user cannot create admin account" do
-    create_user
+    user = create_user
 
-    visit login_path
-
-    click_on "Login"
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    expect(current_path).to eq("/dashboard")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit "/users/new"
 
