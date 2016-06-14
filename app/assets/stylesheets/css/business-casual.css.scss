@@ -54,6 +54,26 @@ hr {
   margin-left: 18px;
 }
 
+.small-search select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+.small-search {
+  background: no-repeat right #ddd;
+  font-size: 12px;
+  height: 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
 .button-move {
   margin-top: 6px;
   width: 120px;
@@ -69,6 +89,10 @@ hr {
 
 .muted-red {
   background-color: #AB5653;
+}
+
+.muted-orange {
+  background-color: #BF9673;
 }
 
 .text-white {

@@ -3,7 +3,7 @@
     <div class="box">
       <div class="col-lg-12">
       <hr class="black-line">
-        <h1 class="intro-text text-center black">Create Account</h1>
+        <h1 class="intro-text text-center black">Create Property</h1>
       <hr class="black-line">
       <div class="row">
         <%= form_for(@property) do |f| %>
@@ -26,21 +26,21 @@
           <%= f.text_field :price, class: "form-control" %>
 
           <%= f.label :property_image %>
-          <%= f.file_field :property_image%>
+          <%= f.file_field :property_image %>
 
           <%= f.label :city, "City" %>
-          <%= f.select :city, options_for_select(us_cities), class: "form-control" %><br>
+          <%= f.select :city, options_for_select(us_cities), {}, class: "small-search", style: "margin-left: 80px;" %><br>
 
           <%= f.label :state, "State" %>
-          <%= f.select :state, options_for_select(us_states), class: "form-control" %><br>
+          <%= f.select :state, options_for_select(us_states), {}, class: "small-search", style: "margin-left: 71px;" %><br>
 
           <%= f.label :category, "Space Category" %>
-          <%= f.select :category, options_for_select(Category.all.collect {|category| category.title}), class: "form-control" %>
+          <%= f.select :category, options_for_select(Category.all.collect {|category| category.title}), {}, class: "small-search" %>
 
           <div class="row">
             <br>
-            <div class="col-md-offset-1">
-              <%= f.submit "Create Space", class: "btn btn-default" %>
+            <div class="pad">
+              <%= f.submit "Create Space", class: "btn btn-primary" %>
             </div>
           </div>
           <% end %>
