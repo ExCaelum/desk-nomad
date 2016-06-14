@@ -5,6 +5,23 @@ class PropertiesController < ApplicationController
       @properties = Property.active.search(params[:city])
     else
       @properties = Property.active
+      # @property_cities = Property.all.pluck(:city)
+    end
+  end
+
+  def new
+    @property = Property.new
+  end
+
+  def create
+    @category = Category.find_by(title: params[:property][:category])
+    @property = @category.properties.create(property_params)
+    if @property.save
+      flash[:success] = "Property Created Sucessfully"
+      redirect_to properties_path
+    else
+      flash[:error] = "Property was unable to be created"
+      render :new
     end
   end
 
@@ -24,7 +41,8 @@ class PropertiesController < ApplicationController
 private
   def property_params
     params.require(:property).permit(:title, :description, :price,
-                                     :image, :city, :state, :category_id, :status)
+                                     :property_image, :city, :state,
+                                     :category_id, :status)
   end
 
 end

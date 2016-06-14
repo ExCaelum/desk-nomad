@@ -19,7 +19,7 @@
           <% @cart.return_properties.each do |property| %>
             <div class="col-md-3">
               <div class="text-center">
-                <p style="background-color:#FDFDFD"><%= image_tag property.image.url %><br>
+                <p style="background-color:#FDFDFD"><%= image_tag property.property_image(:square) %><br>
                 <%= link_to property.title, property_path(property), class: "text-muted" %> - <%= property.quantity %> Days<br>
                 <%= property.city %>, <%= property.state %> - $<%= property.price %>/Day<br>
                 $<%= property.total %> total <%= button_to "Remove Property", {controller: :cart_properties, action: :destroy, prop_id: property.id}, method: :delete, class: "btn btn-sm text-white muted-red" %>
