@@ -11,10 +11,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new
-    cart_checker = CartChecker.new(@cart)
-    if cart_checker.check_cart
-      @order.save
-      @order.confirm_order(@cart)
+    order_parser = OrderParser.new(@cart, @order)
+    if order_parser.check_order
+      order_parser.confirm
       session.delete :cart
       flash[:success] = "Order was successfully placed"
       redirect_to orders_path
