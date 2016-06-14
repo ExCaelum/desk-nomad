@@ -117,7 +117,7 @@ end
     array << Property.create(title: "Property#{i}",
                              description: "This is property #{i}",
                              price: 10,
-                             image_file_name: "file_name.jpeg",
+                             property_image_file_name: "file_name.jpeg",
                              city: "Denver",
                              state: "Colorado")
       end
@@ -128,7 +128,7 @@ end
     Property.create(title: "Property0",
                     description: "This is property 0",
                     price: 10,
-                    image_file_name: "file_name.jpeg",
+                    property_image_file_name: "file_name.jpeg",
                     city: "Denver",
                     state: "Colorado")
   end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "root#show"
 
-  resources :properties, only: [:index, :show]
+  resources :properties, only: [:index, :show, :new, :create]
 
   resources :cart_properties, only: [:create]
   get "/cart", to: "cart_properties#index"
