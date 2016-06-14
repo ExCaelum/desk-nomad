@@ -5,17 +5,11 @@ RSpec.feature "admin cannot edit user info" do
     admin = create_admin
     user = create_user
 
-    visit login_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    fill_in "Username", with: "nickpisciotta"
-    fill_in "Password", with: "password"
-    click_on "Login"
+    visit dashboard_path
 
     expect(current_path).to eq("/admin/dashboard")
-
-    within (".address-bar") do
-      expect(page).to have_content("Welcome Nick")
-    end
 
     click_on "Edit User"
 

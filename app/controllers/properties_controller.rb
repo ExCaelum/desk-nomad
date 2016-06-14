@@ -5,6 +5,7 @@ class PropertiesController < ApplicationController
       @properties = Property.active.search(params[:city])
     else
       @properties = Property.active
+      # @property_cities = Property.all.pluck(:city)
     end
   end
 
