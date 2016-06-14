@@ -7,6 +7,14 @@
       <hr class="black-line">
       <div class="row">
         <%= form_for(@property) do |f| %>
+          <% if @property.errors.any? %>
+            <h2><%= pluralize(@property.errors.count, "error") %> prohibited this photo from being saved:</h2>
+            <ul>
+              <% @property.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+            <% end %>
 
           <%= f.label :title %>
           <%= f.text_field :title, class: "form-control" %>
@@ -17,6 +25,9 @@
           <%= f.label :price %>
           <%= f.text_field :price, class: "form-control" %>
 
+          <%= f.label :property_image %>
+          <%= f.file_field :property_image%>
+
           <%= f.label :city, "City" %>
           <%= f.select :city, options_for_select(us_cities), class: "form-control" %><br>
 
@@ -25,6 +36,7 @@
 
           <%= f.label :category, "Space Category" %>
           <%= f.select :category, options_for_select(Category.all.collect {|category| category.title}), class: "form-control" %>
+
           <div class="row">
             <br>
             <div class="col-md-offset-1">
