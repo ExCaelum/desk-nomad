@@ -2,16 +2,11 @@ require "rails_helper"
 
 RSpec.feature "User logs in" do
   scenario "existing user logs in" do
-    create_user
+    user = create_user
 
-    visit login_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    click_on "Login"
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    expect(current_path).to eq("/dashboard")
+    visit dashboard_path
 
     within (".address-bar") do
       expect(page).to have_content("Welcome Roger")
@@ -28,7 +23,7 @@ RSpec.feature "User logs in" do
 
   scenario "user attempts login with missing credentials" do
     create_user
-
+  
     visit login_path
 
     click_on "Login"

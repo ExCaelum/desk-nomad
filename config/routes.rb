@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "root#show"
 
-  resources :properties, only: [:index, :show]
+  resources :properties, only: [:index, :show, :new, :create]
 
   resources :cart_properties, only: [:create]
   get "/cart", to: "cart_properties#index"
@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
 
   resources :orders, only: [:create, :index, :show]
-  # post '/orders', to: "orders#create"
-  # get '/orders', to: "orders#index"
-  # get '/show', to: "orders#show"
+
   namespace :admin do
    resource :dashboard, only:[:show]
   end
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete '/logout', to: 'sessions#destroy'
 
+  resources :categories, only: [:index]
   get "/:slug", to: "categories#show", as: 'category'
 
   # get '/auth/facebook/callback', to: 'sessions#create'

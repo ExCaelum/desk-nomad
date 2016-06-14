@@ -35,6 +35,7 @@ gem 'font-awesome-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-oauth2'
 gem 'figaro'
+gem 'aws-sdk', '< 2.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
