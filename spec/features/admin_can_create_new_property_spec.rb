@@ -28,6 +28,7 @@ RSpec.feature "admin can add property" do
       expect(page).to have_content("Property")
       expect(page).to have_content("Denver")
       expect(page).to have_content($100)
+      expect(page).to have_css("img[src]")
     end
   end
 

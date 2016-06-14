@@ -125,12 +125,12 @@ end
     end
 
   def create_one_property
-    Property.create(title: "Property0",
+    Property.create(title: "Property1",
                     description: "This is property 0",
                     price: 10,
                     property_image_file_name: "file_name.jpeg",
-                    city: "Denver",
-                    state: "Colorado")
+                    city: "Los Angeles",
+                    state: "California")
   end
 
   def create_category
