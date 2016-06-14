@@ -3,9 +3,15 @@ require "rails_helper"
 RSpec.feature "User logs in" do
   scenario "existing user logs in" do
     user = create_user
+<<<<<<< HEAD
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+=======
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+>>>>>>> second-dev
     visit dashboard_path
 
     within (".address-bar") do

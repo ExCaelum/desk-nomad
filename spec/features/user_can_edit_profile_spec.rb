@@ -3,9 +3,13 @@ require 'rails_helper'
 RSpec.feature "user edit their account info" do
   scenario "user logs in to dashboard and can edit account with valid params" do
     user = create_user
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+<<<<<<< HEAD
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+=======
+>>>>>>> second-dev
     visit dashboard_path
 
     click_on "Edit User"
@@ -22,9 +26,13 @@ RSpec.feature "user edit their account info" do
 
   scenario "user tries to update account without username" do
     user = create_user
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+<<<<<<< HEAD
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+=======
+>>>>>>> second-dev
     visit dashboard_path
 
     click_on "Edit User"
@@ -41,7 +49,9 @@ RSpec.feature "user edit their account info" do
   scenario "user cannot edit another user's profile" do
     user1 = create_user
     user2 = create_second_user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
+<<<<<<< HEAD
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
     visit dashboard_path
@@ -49,6 +59,9 @@ RSpec.feature "user edit their account info" do
     within (".address-bar") do
       expect(page).to have_content("Welcome Roger")
     end
+=======
+    visit dashboard_path
+>>>>>>> second-dev
 
     click_on "Edit User"
 

@@ -11,8 +11,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.new
-    order_parser = OrderParser.new(@cart, @order)
+    order = current_user.orders.new
+    order_parser = OrderParser.new(@cart, order)
     if order_parser.check_order
       order_parser.confirm
       session.delete :cart

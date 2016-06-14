@@ -39,7 +39,11 @@
         <h2>
           <%= form_tag properties_path, :method => 'get' do %>
           <p>
+<<<<<<< HEAD
             <%= select_tag :city, options_for_select(@property_cities), class: "search"%>
+=======
+            <%= select_tag :city, options_for_select(@property_cities), class: "search" %>
+>>>>>>> second-dev
             <%= submit_tag "Search", :name => nil, class: "btn text-white muted-red button-move" %>
           </p>
           <% end %>
