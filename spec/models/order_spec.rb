@@ -17,7 +17,8 @@ RSpec.describe Order, type: :model do
     property1, property2 = create_property(2)
     cart = Cart.new({property1.id => 1, property2.id => 2})
     order = Order.create(user_id: user.id)
-    order.confirm_order(cart)
+    order_parser = OrderParser.new(cart, order)
+    order_parser.confirm
 
     expect(order.total).to eq(30)
   end
