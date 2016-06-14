@@ -11,10 +11,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new
-    cart_checker = CartChecker.new(@cart)
-    if cart_checker.check_cart
-      @order.save
-      @order.confirm_order(@cart)
+    order_parser = OrderParser.new(@cart, @order)
+    if order_parser.check_order
+      order_parser.confirm
       session.delete :cart
       flash[:success] = "Order was successfully placed"
       redirect_to orders_path
@@ -25,8 +24,9 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user.id == params[:user_id]
-      @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
+    if current_user.id == @order.user_id
+      true
     else
       render file: "/public/404"
     end

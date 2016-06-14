@@ -1,8 +1,12 @@
 class CategoriesController < ApplicationController
-  before_action :check_slug
+  before_action :check_slug, only: :show
 
   def show
     @category = Category.find_by(slug: params[:slug])
+  end
+
+  def index
+    @categories = Category.all
   end
 
   private
