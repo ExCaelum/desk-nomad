@@ -10,10 +10,7 @@ class Property < ActiveRecord::Base
   has_many :orders, through: :orders_properties
 
   validates_attachment_content_type :property_image,
-                                    :content_type => /\Aimage\/.*\Z/
-                                    # %w(image/jpg, image/jpeg, image/png)
-
-
+                                    :content_type => /\Aimage\/.*\Z/                          
   validates :title, presence: true,
                     uniqueness: true
   validates :description, presence: true
@@ -32,5 +29,11 @@ class Property < ActiveRecord::Base
 
   def retire_property
     update(status: "retired")
+  end
+
+  def category_name
+    if category
+      category.title
+    end
   end
 end

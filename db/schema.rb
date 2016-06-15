@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614044039) do
+ActiveRecord::Schema.define(version: 20160614235946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20160614044039) do
 
   add_index "orders_properties", ["order_id"], name: "index_orders_properties_on_order_id", using: :btree
   add_index "orders_properties", ["property_id"], name: "index_orders_properties_on_property_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "body"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string   "title"

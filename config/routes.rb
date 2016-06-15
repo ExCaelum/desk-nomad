@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
    resource :dashboard, only:[:show]
    resources :orders, only:[:show, :index, :update]
+   resources :properties, only: [:index, :edit, :update]
   end
 
   resources :contacts, only: [:new, :create]
@@ -28,9 +29,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index]
   get "/:slug", to: "categories#show", as: 'category'
 
-  # get '/auth/facebook/callback', to: 'sessions#create'
-  # get '/auth/failure', to: redirect('/')
-
+  resources :charges
 
   get '*path' => redirect('/')
 end
