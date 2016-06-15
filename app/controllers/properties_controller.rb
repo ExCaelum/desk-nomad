@@ -4,7 +4,8 @@ class PropertiesController < ApplicationController
     @properties = Property.active
     @categories = Category.pluck(:title).uniq
     @property_cities = @properties.pluck(:city).uniq
-  end
+
+end
 
   def new
     @property = Property.new

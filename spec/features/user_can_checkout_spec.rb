@@ -26,10 +26,5 @@ RSpec.feature "User can checkout" do
     expect(current_path).to eq("/cart")
     click_link "Checkout"
     expect(current_path).to eq("/charges/new")
-
-    # click_on "Pay with Card"
-    # # save_and_open_page
-    # expect(page).to have_content("Order was successfully placed")
-    # expect(page).to have_content("Order ##{Order.first.id}")
   end
 end
