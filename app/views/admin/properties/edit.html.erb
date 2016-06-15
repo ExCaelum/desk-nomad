@@ -3,12 +3,12 @@
     <div class="box">
       <div class="col-lg-12">
       <hr class="black-line">
-        <h1 class="intro-text text-center black">Create Property</h1>
+        <h1 class="intro-text text-center black">Edit Property</h1>
       <hr class="black-line">
       <div class="row">
-        <%= form_for(@property) do |f| %>
+        <%= form_for([:admin, @property]) do |f| %>
           <% if @property.errors.any? %>
-            <h2><%= pluralize(@property.errors.count, "error") %> prohibited this photo from being saved:</h2>
+            <h2><%= pluralize(@property.errors.count, "error") %> prevented this photo from being saved:</h2>
             <ul>
               <% @property.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -35,12 +35,15 @@
           <%= f.select :state, options_for_select(us_states), {}, class: "small-search", style: "margin-left: 71px;" %><br>
 
           <%= f.label :category, "Space Category" %>
-          <%= f.select :category, options_for_select(Category.all.collect {|category| category.title}), {}, class: "small-search" %>
+          <%= f.select :category, options_for_select(@categories), {}, class: "small-search" %>
+
+          <%= f.label :status, "Status" %>
+          <%= f.select :status, options_for_select(["active", "retired"]), {}, class: "small-search", style: "margin-left: 71px;" %><br>
 
           <div class="row">
             <br>
             <div class="pad">
-              <%= f.submit "Create Space", class: "btn btn-primary" %>
+              <%= f.submit "Update Property", class: "btn btn-primary" %>
             </div>
           </div>
           <% end %>
