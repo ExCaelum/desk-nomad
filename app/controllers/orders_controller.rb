@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     order = current_user.orders.new
     order_parser = OrderParser.new(@cart, order)
     if order_parser.check_order
+      UserNotifier.send_booking_email(current_user, @cart).deliver
       order_parser.confirm
       session.delete :cart
       flash[:success] = "Order was successfully placed"
