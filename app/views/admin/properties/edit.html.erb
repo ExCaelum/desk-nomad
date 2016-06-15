@@ -37,10 +37,13 @@
           <%= f.label :category, "Space Category" %>
           <%= f.select :category, options_for_select(@categories), {}, class: "small-search" %>
 
+          <%= f.label :status, "Status" %>
+          <%= f.select :status, options_for_select(["active", "retired"]), {}, class: "small-search", style: "margin-left: 71px;" %><br>
+
           <div class="row">
             <br>
             <div class="pad">
-              <%= f.submit "Create Space", class: "btn btn-primary" %>
+              <%= f.submit "Update Property", class: "btn btn-primary" %>
             </div>
           </div>
           <% end %>

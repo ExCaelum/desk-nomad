@@ -10,9 +10,9 @@ class Admin::PropertiesController < Admin::BaseController
   end
 
   def update
-    @propertt = Property.find(params[:id])
+    @property = Property.find(params[:id])
     if @property.update(property_params)
-      flash[:message] = "Property #{@property.name}, updated"
+      flash[:message] = "Property #{@property.title} updated"
       redirect_to admin_properties_path
     else
       flash.now[:error] = @property.errors.full_messages.join(", ")
