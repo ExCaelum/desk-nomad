@@ -90,7 +90,7 @@ Rails.application.configure do
 ActionMailer::Base.smtp_settings = {
 :user_name => 'nickpisciotta',
 :password => 'awestrocks1',
-:domain => 'https://desk-nomad.herokuapp.com/',
+:domain => 'https://desknomad.herokuapp.com/',
 :address => 'smtp.sendgrid.net',
 :port => 587,
 :authentication => :plain,
