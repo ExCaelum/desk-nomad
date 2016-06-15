@@ -39,6 +39,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'sendgrid'
 gem 'griddler'
 gem 'localtunnel'
+gem 'stripe'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

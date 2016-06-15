@@ -17,8 +17,7 @@ class OrdersController < ApplicationController
       UserNotifier.send_booking_email(current_user, @cart).deliver
       order_parser.confirm
       session.delete :cart
-      flash[:success] = "Order was successfully placed"
-      redirect_to orders_path
+      redirect_to new_charge_path(order: order)
     else
       flash[:success] = "Please add items to your cart before checking out"
       redirect_to "/cart"

@@ -7,5 +7,4 @@ class User < ActiveRecord::Base
   validates :email, presence: true #uniqueness: true
 
   enum role: %w(default admin)
-  # user.url = auth_hash['info']['urls'][user.provider.capitalize]
 end
