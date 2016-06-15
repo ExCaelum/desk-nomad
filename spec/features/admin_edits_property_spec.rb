@@ -27,10 +27,8 @@ RSpec.feature "Admin Can Edit Property" do
     expect(page).to have_content("New Title")
     expect(page).to have_content("retired")
 
-    # expect(property.title).to eq("New Title")
-    # # expect(property.description).to eq("This is an updated property")
-    # expect(property.title).to eq ("New Title")
-    # expect(property.status).to eq("retired")
+    visit property_path(property)
+    expect(page).to have_content("This is an updated property")
   end
 
   scenario "non-admin user cannot edit property" do
@@ -46,10 +44,3 @@ RSpec.feature "Admin Can Edit Property" do
     expect(page).to have_content("The page you were looking for doesn't exist")
   end
 end
-
-# Background: an existing item
-# As an admin
-# When I visit "admin/items"
-# And I click "Edit"
-# Then my current path should be "/admin/items/:ITEM_ID/edit"
-# And I should be able to upate title, description, image, and status
