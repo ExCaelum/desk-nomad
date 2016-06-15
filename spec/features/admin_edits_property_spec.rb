@@ -27,8 +27,10 @@ RSpec.feature "Admin Can Edit Property" do
     expect(page).to have_content("New Title")
     expect(page).to have_content("retired")
 
-    visit property_path(property)
-    expect(page).to have_content("This is an updated property")
+    property = Property.find(property.id)
+    expect(property.title).to eq("New Title")
+    expect(property.description).to eq("This is an updated property")
+    expect(property.status).to eq("retired")
   end
 
   scenario "non-admin user cannot edit property" do
