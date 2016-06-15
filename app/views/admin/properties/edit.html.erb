@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+      <hr class="black-line">
+        <h1 class="intro-text text-center black">Edit Property</h1>
+      <hr class="black-line">
+      <div class="row">
+        <%= form_for([:admin, @property]) do |f| %>
+          <% if @property.errors.any? %>
+            <h2><%= pluralize(@property.errors.count, "error") %> prevented this photo from being saved:</h2>
+            <ul>
+              <% @property.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+            <% end %>
+
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+
+          <%= f.label :description %>
+          <%= f.text_field :description, class: "form-control" %>
+
+          <%= f.label :price %>
+          <%= f.text_field :price, class: "form-control" %>
+
+          <%= f.label :property_image %>
+          <%= f.file_field :property_image %>
+
+          <%= f.label :city, "City" %>
+          <%= f.select :city, options_for_select(us_cities), {}, class: "small-search", style: "margin-left: 80px;" %><br>
+
+          <%= f.label :state, "State" %>
+          <%= f.select :state, options_for_select(us_states), {}, class: "small-search", style: "margin-left: 71px;" %><br>
+
+          <%= f.label :category, "Space Category" %>
+          <%= f.select :category, options_for_select(@categories), {}, class: "small-search" %>
+
+          <div class="row">
+            <br>
+            <div class="pad">
+              <%= f.submit "Create Space", class: "btn btn-primary" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
