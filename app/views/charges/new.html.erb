@@ -1,25 +1,38 @@
-<div class="container">
-  <h1>Please provide a payment method to continue with your booking.</h1>
-  <div class="col-md-12 text-center">
-
-
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <hr class="black-line">
+        <h1 class="row text-center">Please provide a payment
+            <h2 class="intro-text text-center"><strong>
+            </strong></h2>
+            <h2 class="text-center" id="active-retired"></h2>
+        </h1>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center">
+            <p>
+              <%= form_tag charges_path do %>
+                <article>
+                <% if flash[:error].present? %>
+                  <div id="error_explanation">
+                    <p><%= flash[:error] %></p>
+                  </div>
+                <% end %>
+                <label class="amount">
+                  <span>Amount: <%= format_price(@amount).to_i/100 %></span>
+                </label>
+                </article>
+                <hr class="black-line">
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="Desk Nomad Booking"
+                    data-amount="<%= format_price(@amount) %>"
+                    data-locale="auto"></script>
+              <% end %>
+            </p>
+          </div>
+        </div>
       </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: <%= format_price(@amount).to_i/100 %></span>
-    </label>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Desk Nomad Booking"
-          data-amount="<%= format_price(@amount) %>"
-          data-locale="auto"></script>
-<% end %>
+    </div>
   </div>
 </div>
