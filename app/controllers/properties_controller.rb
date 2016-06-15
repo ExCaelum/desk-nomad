@@ -1,12 +1,9 @@
 class PropertiesController < ApplicationController
 
   def index
-    if params[:city]
-      @properties = Property.active.search(params[:city])
-    else
-      @properties = Property.active
-      # @property_cities = Property.all.pluck(:city)
-    end
+    @properties = Property.active
+    @categories = Category.pluck(:title).uniq
+    @property_cities = @properties.pluck(:city).uniq
   end
 
   def new

@@ -30,4 +30,10 @@ class Property < ActiveRecord::Base
   def retire_property
     update(status: "retired")
   end
+
+  def category_name
+    if category
+      category.title
+    end
+  end
 end
