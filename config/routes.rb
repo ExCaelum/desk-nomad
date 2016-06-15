@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
    resource :dashboard, only:[:show]
+   resources :properties, only: [:edit, :update]
   end
 
   resources :contacts, only: [:new, :create]
