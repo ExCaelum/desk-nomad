@@ -11,14 +11,14 @@ RSpec.feature "visitor can narrow search by cities" do
 
     click_on "Search"
 
-    within (".col-md-3") do
+    within (".col-md-3:first") do
       expect(page).to have_content("Property0")
       expect(page).to have_content("Denver")
       expect(page).to have_content($10)
       expect(page).to have_css("img[src]")
     end
 
-    within (".col-md-3") do
+    within (".col-md-3:first") do
       expect(page).to_not have_content("Property1")
       expect(page).to_not have_content("Los Angeles")
     end
