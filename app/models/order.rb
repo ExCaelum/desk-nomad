@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
     end.reduce(:+)
   end
 
-  def format_price(number)
-    "$#{sprintf('%.2f', number.to_f/100)}"
+  def self.locate(target)
+    Order.where(status: target).count
   end
 end
