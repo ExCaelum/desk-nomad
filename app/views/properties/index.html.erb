@@ -8,14 +8,20 @@
             <h2 class="intro-text text-center"><strong>to showcase your content</strong></h2>
         </h1>
         <hr class="black-line"><br>
+
+        <%= render partial: "filter" %>
+
         <div class="row">
           <% @properties.each do |property| %>
             <div class="col-md-3">
-              <div class="text-center">
-                <p style="background-color:#FDFDFD"><%= link_to (image_tag property.property_image(:square)), property_path(property) %><br>
-                <%= link_to property.title, property_path(property), class: "text-muted" %><br>
-                <%= property.city %>, <%= property.state %><br>
-                $<%= property.price %>/Day</p>
+              <div class="property" data-category="<%= property.category_name %>" data-city="<%= property.city %>">
+
+                <div class="text-center">
+                  <p style="background-color:#FDFDFD"><%= link_to (image_tag property.property_image(:square)), property_path(property) %><br>
+                  <%= link_to property.title, property_path(property), class: "text-muted" %><br>
+                  <%= property.city %>, <%= property.state %><br>
+                  $<%= property.price %>/Day</p>
+                </div>
               </div>
             </div>
           <% end %>
