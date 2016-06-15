@@ -1,5 +1,4 @@
 class Admin::PropertiesController < Admin::BaseController
-
   def index
     @properties = Property.all
   end
@@ -20,11 +19,17 @@ class Admin::PropertiesController < Admin::BaseController
     end
   end
 
-private
+  private
+
   def property_params
-    params.require(:property).permit(:title, :description, :price,
-                                       :property_image, :city, :state,
-                                       :category_id, :status)
+    params.require(:property).permit(:title,
+                                     :description,
+                                     :price,
+                                     :property_image,
+                                     :city,
+                                     :state,
+                                     :category_id,
+                                     :status)
   end
 
 

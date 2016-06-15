@@ -20,7 +20,7 @@ RSpec.feature "Admin Can Edit Property" do
 
     fill_in "Title", with: "New Title"
     fill_in "Description", with: "This is an updated property"
-    select "retired", :from => "Status"
+    select "retired", from: "Status"
     click_on "Update Property"
 
     expect(current_path).to eq(admin_properties_path)
