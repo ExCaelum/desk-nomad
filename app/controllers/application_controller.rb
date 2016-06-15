@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
   def set_cart
     @cart = Cart.new(session[:cart])
   end
+
+  def format_price(number)
+    "$#{sprintf('%.2f', number.to_f/100)}"
+  end
+
 end
