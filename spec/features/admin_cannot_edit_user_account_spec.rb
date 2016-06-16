@@ -16,6 +16,7 @@ RSpec.feature "admin cannot edit user info" do
     visit "/users/2/edit"
 
     fill_in "Username", with: "User1"
+
     click_on "Update Account"
 
     expect(user.username).to eq(user.username)

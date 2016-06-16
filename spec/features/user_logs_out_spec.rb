@@ -7,8 +7,10 @@ RSpec.feature "User logs out" do
     visit login_path
 
     click_on "Login"
+
     fill_in "Username", with: "turing123"
     fill_in "Password", with: "password"
+
     click_on "Login"
 
     within (".address-bar") do
