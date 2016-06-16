@@ -10,9 +10,8 @@ class UserNotifier < ActionMailer::Base
 
   def send_booking_email(user, cart)
     @user = user
-    @property = Property.find(cart.contents.keys.join)
     mail( :to => @user.email,
-    :subject => "Thanks for booking #{@property.title} on Desk Nomad!" )
+    :subject => "Thanks for booking on Desk Nomad!" )
   end
 
 end
