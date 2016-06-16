@@ -33,18 +33,6 @@
           </div>
         </div>
       </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: <%= format_price(@amount)%></span>
-    </label>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Desk Nomad Booking"
-          data-amount="<%= format_price(@amount) %>"
-          data-locale="auto"></script>
-<% end %>
     </div>
   </div>
 </div>
