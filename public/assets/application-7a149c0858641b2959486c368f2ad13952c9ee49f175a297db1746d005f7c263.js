@@ -13976,6 +13976,20 @@ $(document).ready(function () {
     });
   });
 
+
+  $("#property_filter_name").on('keyup', function(){
+  var currentTitle = this.value;
+  $properties.each(function (index, property) {
+    var $property = $(property);
+    if($property.data("title").indexOf(currentTitle) !== -1 ){
+      $property.show();
+    } else {
+      $property.hide();
+    }
+  });
+});
+
+
   $("#property_filter_city").on("change", function () {
     var currentCity = this.value;
     $properties.each(function (index, property) {
@@ -13987,7 +14001,6 @@ $(document).ready(function () {
       }
     });
   });
-
 });
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
