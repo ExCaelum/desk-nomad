@@ -27,7 +27,7 @@ class ChargesController < ApplicationController
   private
 
     def order_amount
-      @amount = Order.last.total * 100
+      @amount = Order.last.total
     end
 
 end
