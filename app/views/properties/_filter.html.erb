@@ -1,0 +1,6 @@
+<div class="filter">
+  <label>Filter By Category</label>
+  <%= select :property, :filter_category, @categories, {include_blank: true} %>
+  <label>Filter By City</label>
+  <%= select :property, :filter_city, @property_cities, {include_blank: true} %>
+</div>

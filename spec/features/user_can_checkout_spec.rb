@@ -2,12 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "User can checkout" do
   scenario "Authenticated user can checkout and create an order" do
-    User.create(first_name: "Roger",
-              last_name: "Smith",
-              email: "rsmith@gmail.com",
-              username: "turing123",
-              password: "password",
-              password_confirmation: "password")
+    create_user
+
     category = create_category
     property0, property1 = create_property(2)
     category.properties << property0
@@ -25,11 +21,10 @@ RSpec.feature "User can checkout" do
     fill_in "Password", with: "password"
     click_on "Login"
     expect(page).to have_content("Roger")
+
     click_link "Bookings"
     expect(current_path).to eq("/cart")
     click_link "Checkout"
-    expect(current_path).to eq("/orders")
-    expect(page).to have_content("Order was successfully placed")
-    expect(page).to have_content("Order ##{Order.first.id}")
+    expect(current_path).to eq("/charges/new")
   end
 end

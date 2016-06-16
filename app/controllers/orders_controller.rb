@@ -12,12 +12,12 @@ class OrdersController < ApplicationController
 
   def create
     order = current_user.orders.new
-     if @cart.has_contents
-      order.save
-      order.confirm_order(@cart)
+    order_parser = OrderParser.new(@cart, order)
+    if order_parser.check_order
+      UserNotifier.send_booking_email(current_user, @cart).deliver
+      order_parser.confirm
       session.delete :cart
-      flash[:success] = "Order was successfully placed"
-      redirect_to orders_path
+      redirect_to new_charge_path(order: order)
     else
       flash[:success] = "Please add items to your cart before checking out"
       redirect_to "/cart"

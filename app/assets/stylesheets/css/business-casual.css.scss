@@ -37,6 +37,10 @@ hr {
     border-color: #999999;
 }
 
+.text-dark{
+  color: #1D1D1D;
+}
+
 .full {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   background: image-url('../img/bg.jpg') no-repeat center center fixed;
@@ -50,12 +54,45 @@ hr {
   margin-left: 18px;
 }
 
+.small-search select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+.small-search {
+  background: no-repeat right #ddd;
+  font-size: 12px;
+  height: 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.button-move {
+  margin-top: 6px;
+  width: 120px;
+}
+
+.resize {
+  height: 300px;
+}
+
 .someDivOverlay {
    background: rgba(70, 72, 82, 0.3)
 }
 
 .muted-red {
   background-color: #AB5653;
+}
+
+.muted-orange {
+  background-color: #BF9673;
 }
 
 .text-white {
@@ -68,6 +105,27 @@ hr {
 
 .text-green {
   color: #04580A
+}
+
+.search select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+.search {
+  background: no-repeat right #ddd;
+  font-size: 16px;
+  width: 120px;
+  height: 34px;
+  overflow: hidden;
+  border: 1px solid #ccc;
 }
 
 .brand,

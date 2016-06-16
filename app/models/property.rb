@@ -1,14 +1,16 @@
 class Property < ActiveRecord::Base
-  has_attached_file :image, default_url: "desk1-thumb.png"
+  has_attached_file :property_image,
+                    styles: {thumb: '100x100>',
+                             square: '200x200#',
+                             medium: '300x300>'
+                            },
+                    default_url: "default_:style.jpg"
   belongs_to :category
   has_many :orders_properties
   has_many :orders, through: :orders_properties
 
-  validates_attachment_content_type :image,
-                                    :content_type =>
-                                    %w(image/jpg, image/jpeg, image/png)
-
-
+  validates_attachment_content_type :property_image,
+                                    :content_type => /\Aimage\/.*\Z/                          
   validates :title, presence: true,
                     uniqueness: true
   validates :description, presence: true
@@ -29,5 +31,9 @@ class Property < ActiveRecord::Base
     update(status: "retired")
   end
 
-
+  def category_name
+    if category
+      category.title
+    end
+  end
 end

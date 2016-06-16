@@ -117,7 +117,7 @@ end
     array << Property.create(title: "Property#{i}",
                              description: "This is property #{i}",
                              price: 10,
-                             image_file_name: "file_name.jpeg",
+                             property_image_file_name: "file_name.jpeg",
                              city: "Denver",
                              state: "Colorado")
       end
@@ -125,12 +125,12 @@ end
     end
 
   def create_one_property
-    Property.create(title: "Property0",
+    Property.create(title: "Property1",
                     description: "This is property 0",
                     price: 10,
-                    image_file_name: "file_name.jpeg",
-                    city: "Denver",
-                    state: "Colorado")
+                    property_image_file_name: "file_name.jpeg",
+                    city: "Los Angeles",
+                    state: "California")
   end
 
   def create_category

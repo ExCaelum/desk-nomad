@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20160611230641) do
-
-# ActiveRecord::Schema.define(version: 20160611210006) do
-
+ActiveRecord::Schema.define(version: 20160614235946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,20 +51,27 @@ ActiveRecord::Schema.define(version: 20160611230641) do
   add_index "orders_properties", ["order_id"], name: "index_orders_properties_on_order_id", using: :btree
   add_index "orders_properties", ["property_id"], name: "index_orders_properties_on_property_id", using: :btree
 
+  create_table "posts", force: :cascade do |t|
+    t.text     "body"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "price"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
     t.string   "city"
     t.string   "state"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "category_id"
-    t.string   "status",             default: "active"
+    t.string   "status",                      default: "active"
+    t.string   "property_image_file_name"
+    t.string   "property_image_content_type"
+    t.integer  "property_image_file_size"
+    t.datetime "property_image_updated_at"
   end
 
   add_index "properties", ["category_id"], name: "index_properties_on_category_id", using: :btree

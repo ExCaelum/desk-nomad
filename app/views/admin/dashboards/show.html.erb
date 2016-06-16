@@ -4,7 +4,9 @@
       <div class="col-lg-12">
         <hr class="black-line">
         <h1 class="row text-center"> Welcome, <%= @user.first_name %>
-            <h2 class="intro-text text-center"><strong>Admin Dashboard</strong></h2>
+            <h2 class="intro-text text-center"><strong>Admin Dashboard<br><br>
+            <%= link_to "Add New Space", new_property_path, class: "btn btn-sm muted-orange text-white" %>
+            </strong></h2>
         </h1>
         <hr class="black-line">
         <div class="row">
@@ -14,10 +16,26 @@
               Last Name: <%= @user.last_name %><br>
               Email: <%= @user.email %><br>
               Username: <%= @user.username %><br>
-              <%= link_to "Edit User", edit_user_path(@user) %>
+              <%= link_to "Edit User", edit_user_path(@user), class: "btn btn-sm muted-red text-white" %>
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart row">
+    <div class="box">
+      <div class="col-lg-12">
+        <hr class="black-line">
+        <h1 class="text-center">Orders
+          <hr class="black-line"><br></h1>
+
+        <%= render partial: 'order_row', locals: {array: @ordered, title: "ordered"} %>
+        <%= render partial: 'order_row', locals: {array: @paid, title: "paid"} %>
+        <%= render partial: 'order_row', locals: {array: @completed, title: "completed"} %>
+        <%= render partial: 'order_row', locals: {array: @cancelled, title: "cancelled"} %>
+
       </div>
     </div>
   </div>

@@ -7,25 +7,30 @@
         <h1 class="text-center">Your Cart
             <h2 class="intro-text text-center"><strong>All items in your cart - Total: $<%= @cart.cart_total %> <br>
               <ul id="user_checkout_message">
-                <% if current_user %>
-                <%= link_to "Checkout", orders_path, method: :post %>
-              </ul>
+              <% if current_user && !@cart.contents.empty?%>
+              <br>
+                <%= link_to "Checkout", orders_path, method: :post, style: "margin-right: 49px;", class: "btn muted-red text-white" %>
+              <% elsif current_user %>
+                <br>
+                <%= link_to "Please Add Items to your Cart", properties_path, class: "text-muted", style: "margin-right: 49px;" %>
               <% else %>
-                <ul><%= link_to "Login or Create Account to Purchase", login_path %></ul>
-              <% end %></strong></h2>
+                <br>
+                <%= link_to "Login or Create Account to Purchase", login_path, class: "text-muted", style: "margin-right: 49px;" %>
+              <% end %>
+            </ul></strong></h2>
         </h1>
         <hr class="black-line"><br>
         <div class="row">
           <% @cart.return_properties.each do |property| %>
             <div class="col-md-3">
               <div class="text-center">
-                <p style="background-color:#FDFDFD"><%= image_tag property.image.url %><br>
+                <p style="background-color:#FDFDFD"><%= image_tag property.property_image(:square) %><br>
                 <%= link_to property.title, property_path(property), class: "text-muted" %> - <%= property.quantity %> Days<br>
                 <%= property.city %>, <%= property.state %> - $<%= property.price %>/Day<br>
                 $<%= property.total %> total <%= button_to "Remove Property", {controller: :cart_properties, action: :destroy, prop_id: property.id}, method: :delete, class: "btn btn-sm text-white muted-red" %>
                 <%= form_tag(cart_path(id: property.id), method: :patch) do %>
-                    <%= select property.id, property.quantity, (1..10).to_a, selected: property.quantity %>
-                    <%= submit_tag "Update Quantity" %>
+                    <%= select property.id, property.quantity, (1..10).to_a, selected: property.quantity, class: "search" %>
+                    <%= submit_tag "Update Quantity", class: "btn btn-sm text-white muted-orange", style: "margin-right: 46px;" %>
                 <% end  %>
                 </p>
               </div>

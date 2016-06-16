@@ -3,18 +3,9 @@ require 'rails_helper'
 RSpec.feature "user edit their account info" do
   scenario "user logs in to dashboard and can edit account with valid params" do
     user = create_user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit login_path
-
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    expect(current_path).to eq("/dashboard")
-
-    within (".address-bar") do
-      expect(page).to have_content("Welcome Roger")
-    end
+    visit dashboard_path
 
     click_on "Edit User"
 
@@ -30,18 +21,9 @@ RSpec.feature "user edit their account info" do
 
   scenario "user tries to update account without username" do
     user = create_user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit login_path
-
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    expect(current_path).to eq("/dashboard")
-
-    within (".address-bar") do
-      expect(page).to have_content("Welcome Roger")
-    end
+    visit dashboard_path
 
     click_on "Edit User"
 
@@ -52,22 +34,14 @@ RSpec.feature "user edit their account info" do
     click_on "Update Account"
 
     expect(page).to have_content("Update was not made")
-    # expect(current_path).to eq(edit_user_path(user))
   end
 
   scenario "user cannot edit another user's profile" do
     user1 = create_user
     user2 = create_second_user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
-    visit login_path
-
-    fill_in "Username", with: "turing123"
-    fill_in "Password", with: "password"
-    click_on "Login"
-
-    within (".address-bar") do
-      expect(page).to have_content("Welcome Roger")
-    end
+    visit dashboard_path
 
     click_on "Edit User"
 
