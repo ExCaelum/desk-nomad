@@ -10,10 +10,12 @@ RSpec.feature "Authorized user doesn't have acesss to another user's data" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_one)
 
     visit "/orders"
+
     expect(page).to have_content("Welcome Roger")
     expect(page).to_not have_content("Order #1")
 
     visit "/orders/1"
+
     expect(page).to_not have_content("Order #1")
     expect(page).to have_content("The page you were looking for doesn't exist")
   end

@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.feature "User logs in" do
   scenario "existing user logs in" do
     user = create_user
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
@@ -26,8 +27,10 @@ RSpec.feature "User logs in" do
     visit login_path
 
     click_on "Login"
+
     fill_in "Username", with: "turing123"
     fill_in "Password", with: ""
+
     click_on "Login"
 
     expect(page).to have_content("Invalid Login")

@@ -14,7 +14,7 @@
         <div class="row">
           <% @properties.each do |property| %>
             <div class="col-md-3">
-              <div class="property" data-category="<%= property.category_name %>" data-city="<%= property.city %>">
+              <div class="property" data-category="<%= property.category_name %>" data-city="<%= property.city %>" data-title="<%= property.title %>"><br>
                 <div class="text-center">
                   <p style="background-color:#FDFDFD"><%= link_to (image_tag property.property_image(:square)), property_path(property) %><br>
                   <%= link_to property.title, property_path(property), class: "text-muted" %><br>

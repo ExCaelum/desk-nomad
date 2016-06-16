@@ -16,8 +16,6 @@ class ChargesController < ApplicationController
       :description => "Desk Nomad",
       :currency => "usd"
     )
-    # order = Order.last
-    # order.update_status_paid
     flash[:success] = "Order was successfully placed"
     redirect_to orders_path
 
