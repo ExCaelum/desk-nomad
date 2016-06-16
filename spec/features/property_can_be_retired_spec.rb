@@ -24,6 +24,7 @@ RSpec.feature "property can be retired" do
     property1.retire_property
 
     visit properties_path
+
     expect(page).to_not have_content(property1.title)
   end
 
@@ -36,6 +37,7 @@ RSpec.feature "property can be retired" do
     property1.retire_property
 
     visit category_path(category)
+
     expect(page).to_not have_content(property1.title)
   end
 end
