@@ -1,0 +1,3 @@
+<div class="col-md-3 text-center">
+  <%= link_to "#{status.capitalize}", admin_orders_path(status: status), class: "text-muted" %> - <%= Order.locate(status) %>
+</div>
