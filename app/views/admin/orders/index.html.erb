@@ -5,18 +5,10 @@
         <hr class="black-line">
         <h1 class="text-center"><%= @status.capitalize %>
           <h2 class="intro-text"><strong>
-          <div class="col-md-3 text-center">
-            <%= link_to "Ordered", admin_orders_path(status: "ordered"), class: "text-muted" %> - <%= Order.locate("ordered") %>
-          </div>
-          <div class="col-md-3 text-center">
-            <%= link_to "Paid", admin_orders_path(status: "paid"), class: "text-muted" %> - <%= Order.locate("paid") %>
-          </div>
-          <div class="col-md-3 text-center">
-            <%= link_to "cancelled", admin_orders_path(status: "cancelled"), class: "text-muted" %> - <%= Order.locate("cancelled") %>
-          </div>
-          <div class="col-md-3 text-center">
-            <%= link_to "Completed", admin_orders_path(status: "completed"), class: "text-muted" %> - <%= Order.locate("completed") %>
-          </div>
+          <%= render partial: 'status_link', locals: {status: "ordered"} %>
+          <%= render partial: 'status_link', locals: {status: "paid"} %>
+          <%= render partial: 'status_link', locals: {status: "completed"} %>
+          <%= render partial: 'status_link', locals: {status: "cancelled"} %>
           <br>
         </strong></h2></h1>
         <hr class="black-line"><br>
