@@ -21,6 +21,7 @@ RSpec.feature "Unauthorized user doesn't have acesss to another user's data" do
     category.properties << property1
 
     visit property_path(property1)
+
     click_on "Book It!"
     click_on "Bookings"
 

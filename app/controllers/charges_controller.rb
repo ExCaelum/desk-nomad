@@ -16,8 +16,6 @@ class ChargesController < ApplicationController
       :description => "Desk Nomad",
       :currency => "usd"
     )
-    # order = Order.last
-    # order.update_status_paid
     flash[:success] = "Order was successfully placed"
     redirect_to orders_path
 
@@ -29,7 +27,7 @@ class ChargesController < ApplicationController
   private
 
     def order_amount
-      @amount = Order.last.total * 100
+      @amount = Order.last.total
     end
 
 end

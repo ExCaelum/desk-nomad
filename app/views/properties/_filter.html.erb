@@ -3,4 +3,6 @@
   <%= select :property, :filter_category, @categories, {include_blank: true} %>
   <label>Filter By City</label>
   <%= select :property, :filter_city, @property_cities, {include_blank: true} %>
+  <label>Filter By Name</label>
+    <%= text_field :property, :filter_name %>
 </div>
